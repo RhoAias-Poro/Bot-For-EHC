@@ -73,7 +73,7 @@ class port80:
             elif fileName == 'Key2.txt':
                 await ctx.send('-IS-')
             elif fileName == 'linkToNuclearWeapon.txt':
-                await ctx.send('antoineHackerLord.com\nuser: EHCno1\npassword:1')
+                await ctx.send('antoineHackerLord.com 443\nuser: EHCno1\npassword:1')
         else:
             await ctx.send('')
         return True

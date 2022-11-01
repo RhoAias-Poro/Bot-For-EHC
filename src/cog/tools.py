@@ -17,6 +17,7 @@ class Tools(commands.Cog):
     encodeNormalPass = os.getenv("EN_CODE_NORMAL_PASS")
     host = os.getenv("HOST")
     portNumber = None
+    website = os.getenv("website")
 
     def __init__(self, bot):
         self.bot = bot
@@ -68,23 +69,30 @@ class Tools(commands.Cog):
         if self.Login:  # check if user have entered already
             await ctx.send('You have already connect to the host: ' + self.host + '\n')
         else:
-            if hostStr != self.host:  # check host error
-                await ctx.send('Invalid host address\n')
-
-            if portStr != '-p':  # check invalid parameter
-                await ctx.send('Wrong parameter in ssh (recommend -p)\n')
-            match portNum:
-                case '80':
-                    Tools.port = port80()
-                    Tools.Login = await self.port.loginCheck(ctx)
-                case '22':
-                    Tools.port = port22()
-                    Tools.Login = await self.port.loginCheck(ctx)
-                case '443':
-                    Tools.port = port443()
-                    Tools.Login = await self.port.loginCheck(ctx)
-                case _:
-                    await ctx.send('This host does not have port ' + portStr + ' to connect\n')
+            if portStr != '-p':
+                await ctx.send('Invalid attributes ' + portStr)
+            else:
+                match portNum:
+                    case '80':
+                        if hostStr != self.host:
+                            await ctx.send('Invalid host connect')
+                        else:
+                            Tools.port = port80()
+                            Tools.Login = await self.port.loginCheck(ctx)
+                    case '22':
+                        if hostStr != self.host:
+                            await ctx.send('Invalid host connect')
+                        else:
+                            Tools.port = port22()
+                            Tools.Login = await self.port.loginCheck(ctx)
+                    case '443':
+                        if hostStr != self.website:
+                            await ctx.send('Invalid host connect')
+                        else:
+                            Tools.port = port443()
+                            Tools.Login = await self.port.loginCheck(ctx)
+                    case _:
+                        await ctx.send('This host does not have port ' + portStr + ' to connect\n')
 
     @commands.command()
     async def exit(self, ctx):
@@ -100,6 +108,16 @@ class Tools(commands.Cog):
             await self.port.listAllFile(ctx)
         else:
             await ctx.send('Command not found')
+    # try:
+    #     @commands.command()
+    #     async def ls(self, ctx):
+    #         if self.Login:
+    #             await self.port.listAllFile(ctx, commandType)
+    #         else:
+    #             await ctx.send('Command not found')
+    # except:
+    #     async def ifNotA(self, ctx):
+    #         await self.port.ultimateList
 
     @commands.command()
     async def cat(self, ctx, fileName: str):
