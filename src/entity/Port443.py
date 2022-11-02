@@ -5,6 +5,7 @@ import discord
 from dotenv import load_dotenv
 
 load_dotenv()
+from ..utils import functions as util
 
 
 class port443:
@@ -24,33 +25,33 @@ class port443:
         return True
 
     async def listAllFile(self, ctx):
-
         await ctx.send('1. base.html\n2. test.antoineHackerLord.com\n')
 
     async def xdg_open(self, ctx, fileName: str):
         if fileName == 'base.html':
-            await ctx.send(self.HTML)
+            await ctx.send(embed=util.embedColor(self.CSS, "html", "FILE: base.html"))
         elif fileName == 'script.js':
-            await ctx.send(self.JS)
+            await ctx.send(embed=util.embedColor(self.CSS, "js", "FILE: script.js"))
         elif fileName == 'style.css':
-            await ctx.send(self.CSS)
+            await ctx.send(embed=util.embedColor(self.CSS, "css", "FILE: style.css"))
             await asyncio.sleep(5)
-            string = 'Congrats on finding the nuclear key, you have saved many lives. Unfortunately,our spies have just discovered that Antoine is going to make a heavy weapon purchase with the Al-Qaeda terrorist group from the Middle East. However, details are yet to be revealed. Your final mission is to find the document file containing information about that transaction and find the exact name of the place where it takes place.'
-            temp = str("""```""") + string + str("""```""")
-            embed = discord.Embed(color=0x206694, title="FINAL MISSION")
-            embed.add_field(name="test", value=temp)
-            await ctx.send(embed=embed)
+            string = 'Congrats on finding the nuclear key, you have done well. However, we worry that he would change the attack but still happen at the same location. Your final mission is to find the document file containing information about that attack and find the exact name of the place where it takes place.'
+            await ctx.send(embed=util.embedColor(string, "", "FINAL MISSION"))
+            await asyncio.sleep(3)
+            string = '''Our spy tells us that maybe it is hidden at the current directory. You should check it.
+                        Remember that you only have 5 minutes left before Antoine finds out everything. Good luck !
+                        (P/s: Maybe this could help you: https://devconnected.com/how-to-show-hidden-files-on-linux/.
+                        However, due to technical reason, at this time only you must use \'ls_a\' to view the hidden files)
+                    '''
+            await ctx.send(embed=util.embedColor(string, "", "CLUES FOR YOU"))
+
         elif fileName == 'test.antoineHackerLord.com':
             await ctx.send('')
         elif fileName == '.secret.txt':
             await ctx.send(self.YOUTUBE)
         elif fileName == '.nothing_special_here.txt':
-            temp = str("""```""") + self.FINALE + str("""```""")
-            embed = discord.Embed(color=0x206694, title="NOTE")
-            embed.add_field(name="test", value=temp)
-            await ctx.send(embed=embed)
-            # await ctx.send(self.FINALE)
-            await ctx.send(file=discord.File('C:\\Users\ADMIN\Pictures\QRCODE.png'))
+            await ctx.send(embed=util.embedColor(self.FINALE, "", "FILE: .nothing_special_here.txt"))
+            await ctx.send(file=discord.File('C:\\Users\Public\Pictures\QRCODE.png'))
         else:
             await ctx.send('Non such file exist')
         return True
