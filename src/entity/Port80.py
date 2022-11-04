@@ -1,88 +1,91 @@
 import os
-
+import discord
 from dotenv import load_dotenv
-
+import asyncio
 load_dotenv()
+from utils import functions as util
 
+class port443:
+    ############# set up variable #######################################################
+    host = "antoine@192.168.0.0"
+    HTML = '''
+    <!DOCTYPE html>
+       <html lang="en">
+         <head>
+           <meta charset="UTF-8">
+           <meta name="viewport" content="width=device-width, initial-scale=1.0">
+           <meta http-equiv="X-UA-Compatible" content="ie=edge">
+           <link rel="stylesheet" href="style.css">
+           <title>On Includes</title>
+         </head>
+         <body>
+           <script src="script.js"></script>
+            <!-- you can open file script.js and style.css -->
+           <h1>My Life as Terror</h1>
+           <p>The greater the suffer, the greater the piece.</p>
+           <br>
+           <p> Source: EHC </p>
+           <button type="button" onclick="greetings();">Say hello</button>
+         </body>
+       </html>
+    '''
+    CSS = '''
+    body {
+        background-color: lightblue;
+        /* NO1} */
+          }'''
+    JS = '''function detonate()
+     {
+       alert("Self destructed!");
+     }'''
+    YOUTUBE = 'NB2HI4DTHIXS653XO4XHS33VOR2WEZJOMNXW2L3XMF2GG2B7OY6WIULXGR3TSV3HLBRVC==='
+    WEBSITE = 'antoineHackerLord.com'
+    FINALE = """
+    - COMPLETED ATTACKS: 
+        +) 29/02/2019: SPREAD OUT CORONA VIRUS
+        +) 20/10/2020: HIJACK INTERNATIONAL AIRPLANE IN CHINA
+        +) 09/11/2021: BOMB AT EIFEL TOWER IN FRANCE
 
-class port80:
-    normalUser = False
-    rootUser = False
-    rootPass = os.getenv('ROOT_PASS')
-    decodeNormalPass = os.getenv('DECODE_NORMAL_PASS')
-    encodeNormalPass = os.getenv('ENCODE_NORMAL_PASS')
-    host = os.getenv('HOST')
-
+    - PLANNING ATTACKS: 
+        +) 26/11/2022 AT ********* ********* (FOR SECURITY REASON ONLY SHOW THE ENCODED IMAGE)"""
+   
+##################################################################################################
     def __init__(self):
         pass
 
     async def loginCheck(self, ctx):
-        await ctx.send("Enter password: ")
-
-        def check(msg):  # check if the information come from the same person
-            return msg.author == ctx.author and msg.channel == ctx.channel
-
-        try:
-            # take user input with 'message' placeholder
-            password = await ctx.bot.wait_for('message', check=check, timeout=60.0)
-            # after this password is like an object that have lots of attributes, so we need to access the
-            # content of it
-        except TimeoutError:
-            # if over 60 seconds then kick
-            await ctx.send('you did not enter password on time, automatic exit')
-            return False
-
-        if password.content == self.decodeNormalPass:  # same pass
-            await ctx.send('Login to ' + self.host + ' as normal user port 80 successfully\n')
-            port80.normalUser = True
-            return True
-        elif password.content == self.encodeNormalPass:
-            await ctx.send('Oh crap, the password is being encode by some type of encryption\n'
-                           + 'Computer have analyze but can not do it, just know that the type use for it ROT13\n'
-                           + 'Please ssh again')
-            return False
-        elif password.content == self.rootPass:
-            await ctx.send('Login to ' + self.host + ' as root user port 80 successfully\n')
-            port80.rootUser = True
-            return True
-        elif password.content == os.getenv("UPDATE_ROOT_ENCODE_PASS"):
-            await ctx.send(
-                'The new password use the new encryption call base64, it totally different from ROT13, Please ssh '
-                'again')
-            return False
-        else:
-            await ctx.send('Wrong password, please try again')
-            return False
-
-    async def listAllFile(self, ctx):
-        if self.normalUser:
-            await ctx.send('1.key1.txt\n2.rootPassword.txt\n')
-        if self.rootUser:
-            await ctx.send(
-                '1. key1.txt\n2. rootPassword.txt\n3. FullKey.txt\n4. Key2.txt\n5. linkToNuclearWeapon.txt\n')
-
-    async def printFile(self, ctx, fileName: str):
-        if fileName == 'key1.txt':
-            await ctx.send('EHC{IA-')
-        elif fileName == 'rootPassword.txt':
-            await ctx.send('tryhackme')
-            return True
-        elif self.rootUser:
-            if fileName == 'FullKey.txt':
-                await ctx.send('EHC{try-your-best}')
-            elif fileName == 'Key2.txt':
-                await ctx.send('-IS-')
-            elif fileName == 'linkToNuclearWeapon.txt':
-                await ctx.send('antoineHackerLord.com 443\nuser: EHCno1\npassword:1')
-        else:
-            await ctx.send('')
+        await ctx.send(util.syntaxHighlight(f"Login to {self.host} 443 successfully\n",""))
         return True
 
-    async def cat(self, ctx, fileName: str):
-        if fileName == os.getenv('BreakFile') and self.rootPass == os.getenv('ROOT_PASS'):
-            port80.rootPass = os.getenv("UPDATE_ROOT_DECODE_PASS")
-            await ctx.send(
-                'máy tính nhận ra sự xâm nhập trái phép, tự động thực hiện giao thức trục xuất và thay đổi mật khẩu, '
-                'hãy truy cập vào port 22 để tìm ra mk mới')
-            return False
-        return await self.printFile(ctx, fileName)
+    async def listAllFile(self, ctx):
+        await ctx.send(util.syntaxHighlight("1. base.html\n2. test.antoineHackerLord.com\n",""))
+
+    async def xdg_open(self, ctx, fileName: str):
+        if fileName == 'base.html':
+            await ctx.send(embed=util.embedColor(self.HTML,"html","FILE: base.html"))
+        elif fileName == 'script.js':
+            await ctx.send(embed=util.embedColor(self.JS,"js","FILE: script.js"))
+        elif fileName == 'style.css':
+            await ctx.send(embed=util.embedColor(self.CSS,"css","FILE: style.css"))
+            await asyncio.sleep(5)
+            string = '''Congrats on finding the nuclear key, you have done well. However, we worry that he would change the attack but still happen at the same location.\nYour final mission is to find the document file containing information about that attack and find the exact name of the place where it takes place.
+            '''
+            await ctx.send(embed=util.embedColor(string,"","FINAL MISSION"))
+            await asyncio.sleep(3)
+            string = "Our spy tells us that maybe it is hidden at the current directory. You should check it.\nRemember that you only have 5 minutes left before Antoine finds out everything. Good luck !\n(P/s: Maybe this could help you: https://devconnected.com/how-to-show-hidden-files-on-linux/. Anyway, the command is: ls -a 😜)"
+            await ctx.send(embed=util.embedColor(string,"","HINT FOR YOU"))
+
+        elif fileName == 'test.antoineHackerLord.com':
+            await ctx.send(embed=util.embedColor("NOTHING HERE","","FILE: test.antoineHackerLord.com"))
+        elif fileName == '.secret.txt':
+            await ctx.send(embed=util.embedColor(self.YOUTUBE,"","FILE: .secret.txt"))
+            await ctx.send(util.syntaxHighlight("Oh, another encryption. Looks like Base64 but it isn't. Perhaps, Base 64/2=? ",""))
+        elif fileName == '.nothing_special_here.txt':
+            await ctx.send(embed=util.embedColor(self.FINALE,"","FILE: .nothing_special_here.txt"))
+            await ctx.send(file=discord.File('D:\Download\DiscordBot_EHC_Workshop\chall_QR.png'))
+        else:
+            await ctx.send(embed=util.embedColor("- No such file exist - ","diff","ERROR"))
+        return True
+
+    async def listAllHiddenFile(self, ctx):
+        await ctx.send(util.syntaxHighlight("1. base.html\n2. test.antoineHackerLord.com\n3. .secret.txt\n 4. .nothing_special_here.txt",""))
