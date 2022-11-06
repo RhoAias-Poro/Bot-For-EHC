@@ -8,6 +8,6 @@ def syntaxHighlight(string, type):
 
 def embedColor(string, type, titleName):
     temp = str("```") + type + "\n" + string + str("```")
-    embed = discord.Embed(color=discord.Color.random(), title=titleName)
+    embed = discord.Embed(color=discord.Color.random(), title="")
     embed.add_field(name=titleName, value=temp)
     return embed
