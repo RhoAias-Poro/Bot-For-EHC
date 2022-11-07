@@ -37,26 +37,26 @@ class port80:
 
         if password.content == self.DECODE_NORMAL_PASS:  # same pass
             await ctx.send(util.syntaxHighlight(f"Login to {self.host} as normal user port 80 successfully\n", ""))
-            await ctx.send(util.embedColor(
-                "When you have access to the host machine, you should do the command $ls to list all the file that can be access to",
+            await ctx.send(embed=util.embedColor(
+                "- When you have access to the host machine, you should do the command $ls to list all the file that can be access to -",
                 'diff', 'PORT 80'))
             port80.normalUser = True
             return True
         elif password.content == self.ENCODE_NORMAL_PASS:
             await ctx.send(embed=util.embedColor(
-                "Oh crap, the password is encoded by some type of encryption\nComputer has analyzed but can not do anything, just figure out it is ROT13\nPlease ssh again with the decoded password",
+                "- Oh crap, the password is encoded by some type of encryption\nComputer has analyzed but can not do anything, just figure out it is ROT13\nPlease ssh again with the decoded password -",
                 "", "WARNING"))
             return False
         elif password.content == self.ROOT_PASS:
             await ctx.send(util.syntaxHighlight(f"Login to {self.host} as root user port 80 successfully\n", ""))
-            await ctx.send(util.embedColor(
-                "When you have access to the root user, you should do the command $ls again to list all the file that which used to be hidden from you"
+            await ctx.send(embed=util.embedColor(
+                "- When you have access to the root user, you should do the command $ls again to list all the file that which used to be hidden from you -",
                 'diff', 'PORT 80'))
             port80.rootUser = True
             return True
         elif password.content == self.UPDATE_ROOT_ENCODE_PASS:
             await ctx.send(embed=util.embedColor(
-                "The new password use the new encryption call base64, it totally different from ROT13.Please ssh again",
+                "- The new password use the new encryption call Base64, it totally different from ROT13.Please ssh again -",
                 "fix", "WARNING"))
             return False
         else:
@@ -65,16 +65,15 @@ class port80:
 
     async def listAllFile(self, ctx):
         if self.normalUser:
-            await ctx.send(util.syntaxHighlight("1. key1.txt\n2. rootPassword.txt\n"))
-            await ctx.send(util.embedColor(
-                "To see the conntent of a file, please use command $cat"
+            await ctx.send(util.syntaxHighlight("1. key1.txt\n2. rootPassword.txt\n", ""))
+            await ctx.send(embed=util.embedColor(
+                "- To see the conntent of a file, please use command $cat -",
                 'diff', 'CAT COMMAND'))
         if self.rootUser:
             await ctx.send(util.syntaxHighlight(
                 "1. key1.txt\n2. rootPassword.txt\n3. FullKey.txt\n4. Key2.txt\n5. linkToNuclearWeapon.txt\n", ""))
-            await ctx.send(util.embedColor(
-                "To see the conntent of a file, please use command $cat"
-                'diff', 'CAT COMMAND'))
+            await ctx.send(embed=util.embedColor(
+                "- To see the conntent of a file, please use command $cat -", 'diff', 'CAT COMMAND'))
 
     async def printFile(self, ctx, fileName: str):
         if fileName == 'key1.txt':
@@ -83,8 +82,7 @@ class port80:
                 "Here is 1/3 of the key, good job", ""))
         elif fileName == "rootPassword.txt":
             await ctx.send(embed=util.embedColor("tryhackme", "", "FILE: rootPassword.txt"))
-            await ctx.send(embed=util.embedColor(
-                "Right now you are in normal user login, here you have root password, please use command $exit and login again with root password"))
+            await ctx.send(util.syntaxHighlight("Looks like the key we are looking for, but it feel so strange", ""))
             return True
         elif self.rootUser:
             if fileName == 'FullKey.txt':

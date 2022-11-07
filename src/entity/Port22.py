@@ -16,28 +16,24 @@ class port22:
         pass
 
     async def loginCheck(self, ctx):
-        await ctx.send(util.syntaxHighlight(f"Login to {self.host} 22 successfully\n", ""))
-        await ctx.send(util.embedColor(
-            "This is where the changed password is hidden. Hurry and find it"
-            'diff', 'PORT 22'))
-        await ctx.send(util.embedColor(
-            "When you have access to the host machine, you should do the command $ls to list all the file that can be "
-            "access to",
+        await ctx.send(util.syntaxHighlight(f"Login to {self.host} port 22 successfully\n", ""))
+        await ctx.send(
+            embed=util.embedColor("- This is where the changed password is hidden. Hurry and find it -", 'diff',
+                                  'PORT 22'))
+        await ctx.send(embed=util.embedColor(
+            "- When you have access to the host machine, you should do the command $ls to list all the file that can be -",
             'diff', 'LS COMMAND'))
         return True
 
     async def listAllFile(self, ctx):
         await ctx.send(util.syntaxHighlight("1. changedKey.txt\n2. changedKey.text", ""))
-        await ctx.send(util.embedColor(
-            "To see the conntent of a file, please use command $cat"
-            'diff', 'CAT COMMAND'))
+        await ctx.send(embed=util.embedColor(
+            "To see the conntent of a file, please use command $cat", 'diff', 'CAT COMMAND'))
 
     async def cat(self, ctx, fileName: str):
         if fileName == 'changedKey.txt':
             await ctx.send(embed=util.embedColor(f"{self.FAKE_ENCODE_ROOT_PASS}", "", "FILE: changedKey.txt"))
-            await ctx.send(util.syntaxHighlight(
-                "It looks like a link to somewhere, try to open it",
-                ""))
+            await ctx.send(util.syntaxHighlight("It looks like a link to somewhere, try to open it", ""))
         elif fileName == 'changedKey.text':
             await ctx.send(embed=util.embedColor(f"{self.NEW_ENCODE_ROOT_PASS}", "", "FILE: changedKey.text"))
             await asyncio.sleep(3)

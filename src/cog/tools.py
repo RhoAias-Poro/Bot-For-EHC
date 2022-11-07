@@ -88,9 +88,9 @@ class Tools(commands.Cog):
 
     @commands.command()
     async def ssh(self, ctx, hostStr: str, portStr: str, portNum: str):
-        users[ctx.author.id].portNumber = portNum
         if users[ctx.author.id].Login:  # check if user have entered already
-            await ctx.send(util.syntaxHighlight(f"'You have already connect to the host: {self.host}\n", ""))
+            await ctx.send(util.syntaxHighlight(
+                f"'You have already connect to the host {self.host} port {users[ctx.author.id].portNumber}", ""))
         else:
             if portStr != '-p':
                 await ctx.send(embed=util.embedColor("- Invalid attribute. Must be -p ", "diff", "ERROR"))
@@ -101,18 +101,21 @@ class Tools(commands.Cog):
                             await ctx.send(embed=util.embedColor("- Invalid host connect - ", "diff", "ERROR"))
                         else:
                             users[ctx.author.id].port = port80()
+                            users[ctx.author.id].portNumber = portNum
                             users[ctx.author.id].Login = await users[ctx.author.id].port.loginCheck(ctx)
                     case '22':
                         if hostStr != self.host:
                             await ctx.send(embed=util.embedColor("- Invalid host connect - ", "diff", "ERROR"))
                         else:
                             users[ctx.author.id].port = port22()
+                            users[ctx.author.id].portNumber = portNum
                             users[ctx.author.id].Login = await users[ctx.author.id].port.loginCheck(ctx)
                     case '443':
                         if hostStr != self.webLogin:
                             await ctx.send(embed=util.embedColor("- Invalid host connect - ", "diff", "ERROR"))
                         else:
                             users[ctx.author.id].port = port443()
+                            users[ctx.author.id].portNumber = portNum
                             users[ctx.author.id].Login = await users[ctx.author.id].port.loginCheck(ctx)
                     case _:
                         await ctx.send(
@@ -129,17 +132,18 @@ class Tools(commands.Cog):
     @commands.command()
     async def exit(self, ctx):
         if users[ctx.author.id].Login:  # if user have login to the host, then exit
-            if users[ctx.author.id] == '80' or users[ctx.author.id] == '22':
+            if users[ctx.author.id].portNumber == '80' or users[ctx.author.id].portNumber == '22':
                 await ctx.send(
                     embed=util.embedColor(
                         'Exit host: ' + self.host + ' port ' + users[ctx.author.id].portNumber + ' successfully\n',
                         'diff', "Exit Successfully"))
-            elif users[ctx.author.id] == '443':
+            elif users[ctx.author.id].portNumber == '443':
                 await ctx.send(
                     embed=util.embedColor(
                         'Exit host: ' + self.website + ' port ' + users[ctx.author.id].portNumber + ' successfully\n',
                         'diff', 'Exit Successfully'))
             users[ctx.author.id].Login = False
+            users[ctx.author.id].portNumber = None
         else:  # if not
             await ctx.send(embed=util.embedColor('You have not enter any host to exist\n', 'diff', 'EXIT ERROR'))
 
@@ -149,10 +153,10 @@ class Tools(commands.Cog):
             if len(args) != 1:
                 await users[ctx.author.id].port.listAllFile(ctx)
             else:
-                if args[0] == "-a" and users[ctx.author.id].getPortNumber() == '443':
+                if args[0] == "-a" and users[ctx.author.id].portNumber == '443':
                     await users[ctx.author.id].port.listAllHiddenFile(ctx)
-                elif args[0] == "-a" and users[ctx.author.id].getPortNumber() == '80' or args[0] == "-a" and users[
-                    ctx.author.id].getPortNumber() == '22':
+                elif args[0] == "-a" and (
+                        users[ctx.author.id].portNumber == '80' or users[ctx.author.id].portNumber == '22'):
                     await users[ctx.author.id].port.listAllFile(ctx)
                 else:
                     raise commands.CommandInvokeError(self, Exception)
