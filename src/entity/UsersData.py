@@ -4,6 +4,7 @@ class Users:
         self.Login = None
         self.port = None
         self.portNumber = None
+        self.status = None
 
     def setLogin(self, Login):
         self.Login = Login
