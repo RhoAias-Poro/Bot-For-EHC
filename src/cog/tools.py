@@ -141,7 +141,7 @@ class Tools(commands.Cog):
                         'diff', 'Exit Successfully'))
             users[ctx.author.id].Login = False
         else:  # if not
-            await ctx.send(embed=util.embedColor('You have not enter any host to exist\n', 'diff', 'Exit Error'))
+            await ctx.send(embed=util.embedColor('You have not enter any host to exist\n', 'diff', 'EXIT ERROR'))
 
     @commands.command()
     async def ls(self, ctx, *args):

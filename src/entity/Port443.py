@@ -117,12 +117,12 @@ class port443:
                                      ""))
         elif fileName == '.nothing_special_here.txt':
             await ctx.send(embed=util.embedColor(self.FINALE, "", "FILE: .nothing_special_here.txt"))
-            await ctx.send(file=discord.File('D:\Download\DiscordBot_EHC_Workshop\chall_QR.png'))
+            await ctx.send(file=discord.File('C:\\Users\ADMIN\Pictures\QRCODE.png'))
         else:
             await ctx.send(embed=util.embedColor("- No such file exist - ", "diff", "ERROR"))
         return True
 
     async def listAllHiddenFile(self, ctx):
         await ctx.send(util.syntaxHighlight(
-            "1. base.html\n2. script.js\n3. style.css\n4. antoineHackerLordTest.com\n5. .secret.txt\n6. .nothing_special_here.txt",
+            "1. base.html\n2. script.js\n3. style.css\n4. antoineHackerLordTest.txt\n5. .secret.txt\n6. .nothing_special_here.txt",
             ""))
