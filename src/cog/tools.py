@@ -56,7 +56,8 @@ class Tools(commands.Cog):
             "Few notes for you: \n  - Look carefully for the spaces in the command, they are very important\n  - If you encounter any encryption, you can look for decoder by google with the key word 'encryption_name + decoder + online'\n\nOK LET'S BEGIN",
             "fix", "NOTE"))
         await ctx.send(embed=util.embedColor(
-            f"Host address: {self.host}\nPassword: {self.encodeNormalPass}\n", "",
+            f"Host address: {self.host}\nPassword: {self.encodeNormalPass}\nIt seem that the password is encoded in ROT13, try to encode it 😥",
+            "",
             "INFORMATION YOU NEED"))
         await ctx.send(embed=util.embedColor(
             "First, you need to scan the host or website to get the appropriate ports. After that you can connect to his machine through those ports.\nTo scan a host, you can use the scan command: $scan host/address/website (information above)",
@@ -67,7 +68,7 @@ class Tools(commands.Cog):
         if hostStr == self.host:  # if the correct host then return the portal
             await ctx.send(embed=util.embedColor("Port for host is: 22, 80\n", "", "SCAN RESULT"))
             await ctx.send(embed=util.embedColor(
-                'In order to connect the host machine, you need to use SSH( a network protocol that give a secure way '
+                'In order to connect the host machine, you need to use SSH(a network protocol that give a secure way '
                 + 'to '
                 + 'access a computer remotely\nFor more information you can access: '
                 + 'https://www.techtarget.com/searchsecurity/definition/Secure-Shell\n'
@@ -90,7 +91,8 @@ class Tools(commands.Cog):
     async def ssh(self, ctx, hostStr: str, portStr: str, portNum: str):
         if users[ctx.author.id].Login:  # check if user have entered already
             await ctx.send(util.syntaxHighlight(
-                f"'You have already connect to the host {self.host} port {users[ctx.author.id].portNumber}", ""))
+                f"'You have already connect to the host {self.host} port {users[ctx.author.id].portNumber}\nYou can use $exit command to exit the current host",
+                ""))
         else:
             if portStr != '-p':
                 await ctx.send(embed=util.embedColor("- Invalid attribute. Must be -p ", "diff", "ERROR"))
@@ -172,31 +174,17 @@ class Tools(commands.Cog):
 
     @commands.command()
     async def cat(self, ctx, fileName: str):
-        if users[ctx.author.id].Login and users[ctx.author.id].portNumber != '443':
+        if users[ctx.author.id].Login:
             users[ctx.author.id].Login = await users[ctx.author.id].port.cat(ctx, fileName)
         else:
             raise commands.CommandInvokeError(self, Exception)
 
     @cat.error
     async def cat_error(self, ctx, error):
-        if isinstance(error, commands.CommandInvokeError):
-            await ctx.send(embed=util.embedColor("- COMMAND ONLY AVAILABLE AT PORT 22,80 -", "diff", "ERROR"))
-        if isinstance(error, commands.MissingRequiredArgument):
+        if isinstance(error, commands.CommandInvokeError) and users[ctx.author.id].Login == True:
             await ctx.send(embed=util.embedColor("- Missing required arguments -\n", "diff", "ERROR"))
-
-    @commands.command()
-    async def open(self, ctx, fileName: str):
-        if users[ctx.author.id].Login and users[ctx.author.id].portNumber == '443':
-            users[ctx.author.id].Login = await users[ctx.author.id].port.open(ctx, fileName)
-        else:
-            raise commands.CommandInvokeError(self, Exception)
-
-    @open.error
-    async def open_error(self, ctx, error):
-        if isinstance(error, commands.CommandInvokeError):
-            await ctx.send(embed=util.embedColor("- COMMAND ONLY AVAILABLE AT PORT 443 -", "diff", "ERROR"))
-        if isinstance(error, commands.MissingRequiredArgument):
-            await ctx.send(embed=util.embedColor("- Missing required arguments -\n", "diff", "ERROR"))
+        if isinstance(error, commands.CommandError) and users[ctx.author.id].Login == False:
+            await ctx.send(util.syntaxHighlight("- PLEASE LOGIN FIRST ! -", "diff"))
 
 
 async def setup(bot):

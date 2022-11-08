@@ -20,7 +20,7 @@ class port80:
         pass
 
     async def loginCheck(self, ctx):
-        await ctx.send("Enter password: ")
+        await ctx.send(util.syntaxHighlight("Please enter password: ", ""))
 
         def check(msg):  # check if the information come from the same person
             return msg.author == ctx.author and msg.channel == ctx.channel

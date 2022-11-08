@@ -85,11 +85,11 @@ class port443:
 
     async def listAllFile(self, ctx):
         await ctx.send(
-            util.syntaxHighlight("1. base.html\n2. script.js\n3. style.css\n4. antoineHackerLordTest.com\n", ""))
+            util.syntaxHighlight("1. base.html\n2. script.js\n3. style.css\n4. antoineHackerLordTest.txt\n", ""))
         await ctx.send(embed=util.embedColor(
             "To open and see the content of files above, please use command $open", 'diff', 'OPEN COMMAND'))
 
-    async def open(self, ctx, fileName: str):
+    async def cat(self, ctx, fileName: str):
         if fileName == 'base.html':
             await ctx.send(embed=util.embedColor(self.HTML, "html", "FILE: base.html"))
         elif fileName == 'script.js':
@@ -117,10 +117,9 @@ class port443:
         elif fileName == '.nothing_special_here.txt':
             await ctx.send(embed=util.embedColor(self.FINALE, "", "FILE: .nothing_special_here.txt"))
             await ctx.send(file=discord.File('C:\\Users\ADMIN\Pictures\QRCODE.png'))
-            await util.syntaxHighlight(
-                "The image above is strange, haven't seen it before, you should Google Lens it to see what happen and "
-                "remember, double of something is the best 🐧 "
-                "Almost end of our mission, please summit the key and location to the website", "")
+            await ctx.send(util.syntaxHighlight(
+                "The image above is strange, haven't seen it before, you should Google Lens it to see what happen and remember, double of something is the best 🐧. Almost end of our mission, please summit the key and location to the website",
+                ""))
         else:
             await ctx.send(embed=util.embedColor("- No such file exist - ", "diff", "ERROR"))
         return True

@@ -18,7 +18,7 @@ class port22:
     async def loginCheck(self, ctx):
         await ctx.send(util.syntaxHighlight(f"Login to {self.host} port 22 successfully\n", ""))
         await ctx.send(
-            embed=util.embedColor("- This is where the changed password is hidden. Hurry and find it -", 'diff',
+            embed=util.embedColor("- This is where the next changed password is hidden. Hurry and find it -", 'diff',
                                   'PORT 22'))
         await ctx.send(embed=util.embedColor(
             "- When you have access to the host machine, you should do the command $ls to list all the file that can be -",

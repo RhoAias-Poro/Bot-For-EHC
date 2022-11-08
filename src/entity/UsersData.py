@@ -4,4 +4,5 @@ class Users:
         self.Login = None
         self.port = None
         self.portNumber = None
-        self.status = None
+        self.firstLogin = False
+
