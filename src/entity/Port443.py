@@ -60,7 +60,7 @@ class port443:
         pass
 
     async def loginCheck(self, ctx):
-        await ctx.send("Enter password: ")
+        await ctx.send("Hãy nhập mật khẩu: ")
 
         def check(msg):  # check if the information come from the same person
             return msg.author == ctx.author and msg.channel == ctx.channel
@@ -72,22 +72,26 @@ class port443:
             # content of it
         except TimeoutError:
             # if over 60 seconds then kick
-            await ctx.send(util.syntaxHighlight("You did not enter password on time, automatically exit", "fix"))
+            await ctx.send(
+                util.syntaxHighlight("Bạn không nhập mật khẩu trong 1 khoảng thời gian, tự động đăng xuất", "fix"))
             return False
 
         if password.content == self.PASSWORD:  # same pass
-            await ctx.send(util.syntaxHighlight(f"Login to {self.host} through port 443 successfully\n", ""))
+            await ctx.send(util.syntaxHighlight(f"Đăng nhập tới {self.host} qua port 443 thành công\n", ""))
+            await ctx.send(embed=util.embedColor(
+                "- Khi kết nối tới host, bạn nên sử dụng lệnh $ls để hiện các file có trong thư mục hiện tại -",
+                'diff', 'PORT 443'))
             port443.userLogin = True
             return True
         else:
-            await ctx.send(embed=util.embedColor("- Wrong password, please try again -", "diff", "ERROR"))
+            await ctx.send(embed=util.embedColor("- Sai mật khẩu, hãy kết nối và thử lại -", "diff", "ERROR"))
             return False
 
     async def listAllFile(self, ctx):
         await ctx.send(
             util.syntaxHighlight("1. base.html\n2. script.js\n3. style.css\n4. antoineHackerLordTest.txt\n", ""))
         await ctx.send(embed=util.embedColor(
-            "To open and see the content of files above, please use command $open", 'diff', 'OPEN COMMAND'))
+            "Để thấy được nội dung của các file, hãy sử dụng lệnh cat: $cat file_name", 'diff', 'CAT COMMAND'))
 
     async def cat(self, ctx, fileName: str):
         if fileName == 'base.html':
@@ -97,31 +101,31 @@ class port443:
         elif fileName == 'style.css':
             await ctx.send(embed=util.embedColor(self.CSS, "css", "FILE: style.css"))
             await asyncio.sleep(5)
-            string = '''Congrats on finding the nuclear key, you have done well. However, we worry that he would change the attack but still happen at the same location.\nYour final mission is to find the document file containing information about that attack and find the exact name of the place where it takes place.
-            '''
+            string = '''Xin chúc mừng việc tìm thấy Key của đầu đạn, Bạn đã làm rất tốt. Tuy nhiên, chúng ta vẫn lo lắng rằng chưa biết địa điểm tấn công mà hắn chọn cụ thể sẽ diễn ra ở đâu.\nNhiệm vụ cuối cùng của bạn là tìm file tài liệu chứa thông tin về nơi sẽ diễn ra cuộc tấn công và báo cáo.'''
             await ctx.send(embed=util.embedColor(string, "", "FINAL MISSION"))
             await asyncio.sleep(3)
-            string = "Our spy tells us that maybe it is hidden at the current directory. You should check it.\nRemember that you only have 5 minutes left before Antoine finds out everything. Good luck !\n(P/s: Maybe this could help you: https://devconnected.com/how-to-show-hidden-files-on-linux/. Anyway, the command is: ls -a 😜)"
+            string = "Theo như thông tin quét được của siêu máy tính thì nó có thể bị ẩn ở đường dẫn hiện tại. Hãy kiểm tra nó.\nNhớ rằng bạn chỉ còn 5 phút trước khi Antoine phát động tấn công. Good luck !\n(P/s: Cái nàyc có thể giúp ích: https://devconnected.com/how-to-show-hidden-files-on-linux/. Nhưng mà câu lệnh là: ls -a 😜)"
             await ctx.send(embed=util.embedColor(string, "", "HINT FOR YOU"))
 
         elif fileName == 'antoineHackerLordTest.txt':
             await ctx.send(embed=util.embedColor("YOU ARE LATE", "", "FILE: antoineHackerLordTest.txt"))
             await ctx.send(util.syntaxHighlight(
-                "Oh no, the time is almost up, you must hurry!!!!!",
+                "Không ổn, thời gian sắp hết, bạn phải nhanh lên!!!!!",
                 ""))
         elif fileName == '.secret.txt':
             await ctx.send(embed=util.embedColor(self.YOUTUBE, "", "FILE: .secret.txt"))
             await ctx.send(
-                util.syntaxHighlight("Oh, another encryption. Looks like Base64 but it isn't. Perhaps, Base 64/2=? ",
-                                     ""))
+                util.syntaxHighlight(
+                    "Lại 1 loại mã hóa khác. Phân tích cho thấy nó giống như Base64 nhưng không phải. Có lẽ, Base 64/2=? ",
+                    ""))
         elif fileName == '.nothing_special_here.txt':
             await ctx.send(embed=util.embedColor(self.FINALE, "", "FILE: .nothing_special_here.txt"))
             await ctx.send(file=discord.File('C:\\Users\ADMIN\Pictures\QRCODE.png'))
             await ctx.send(util.syntaxHighlight(
-                "The image above is strange, haven't seen it before, you should Google Lens it to see what happen and remember, double of something is the best 🐧. Almost end of our mission, please summit the key and location to the website",
+                "Hình ảnh này thật là kì lạ, đến siêu máy tính không thể phân tích được nó, bạn có thể sử dụng Google Lens để tìm hiểu thêm và nhớ, double of something is the best 🐧.\nĐã gần đến hồi kết của nhiệm vụ này rồi, chúng tôi không thể trợ giúp được gì thêm, hãy nộp Key và địa điểm để thoát khỏi kế hoạch của hắn nào",
                 ""))
         else:
-            await ctx.send(embed=util.embedColor("- No such file exist - ", "diff", "ERROR"))
+            await ctx.send(embed=util.embedColor("- Không file nào như vậy tồn tại - ", "diff", "ERROR"))
         return True
 
     async def listAllHiddenFile(self, ctx):

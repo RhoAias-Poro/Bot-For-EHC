@@ -20,7 +20,7 @@ class port80:
         pass
 
     async def loginCheck(self, ctx):
-        await ctx.send(util.syntaxHighlight("Please enter password: ", ""))
+        await ctx.send(util.syntaxHighlight("Hãy nhập mật khẩu: ", ""))
 
         def check(msg):  # check if the information come from the same person
             return msg.author == ctx.author and msg.channel == ctx.channel
@@ -32,80 +32,86 @@ class port80:
             # content of it
         except TimeoutError:
             # if over 60 seconds then kick
-            await ctx.send(util.syntaxHighlight("You did not enter password on time, automatically exit", "fix"))
+            await ctx.send(
+                util.syntaxHighlight("Bạn không nhập mật khẩu trong 1 khoảng thời gian, tự động đăng xuất", "fix"))
             return False
 
         if password.content == self.DECODE_NORMAL_PASS:  # same pass
-            await ctx.send(util.syntaxHighlight(f"Login to {self.host} as normal user port 80 successfully\n", ""))
+            await ctx.send(util.syntaxHighlight(f"Đăng nhập tới {self.host} port 80 như normal user thành công\n", ""))
             await ctx.send(embed=util.embedColor(
-                "- When you have access to the host machine, you should do the command $ls to list all the file that can be access to -",
+                "- Khi kết nối tới host, bạn nên sử dụng lệnh $ls để hiện các file có trong thư mục hiện tại -",
                 'diff', 'PORT 80'))
             port80.normalUser = True
             return True
         elif password.content == self.ENCODE_NORMAL_PASS:
             await ctx.send(embed=util.embedColor(
-                "- Oh crap, the password is encoded by some type of encryption\nComputer has analyzed but can not do anything, just figure out it is ROT13\nPlease ssh again with the decoded password -",
+                "- Mật khẩu đã bị mã hóa theo dạng ROT13\nHãy kết nối lại với mật khẩu đã được giải mã -",
                 "", "WARNING"))
             return False
         elif password.content == self.ROOT_PASS:
-            await ctx.send(util.syntaxHighlight(f"Login to {self.host} as root user port 80 successfully\n", ""))
+            await ctx.send(util.syntaxHighlight(f"Đăng nhập tới {self.host} port 80 như root user thành công\n", ""))
             await ctx.send(embed=util.embedColor(
-                "- When you have access to the root user, you should do the command $ls again to list all the file that which used to be hidden from you -",
+                "- Khi đã có quyền hạn của root user, bạn nên sử dụng lệnh $ls lại để có thể nhìn thấy các file mà từng bị ẩn đi vì không đủ quyền hạn -",
                 'diff', 'PORT 80'))
             port80.rootUser = True
             return True
         elif password.content == self.UPDATE_ROOT_ENCODE_PASS:
             await ctx.send(embed=util.embedColor(
-                "- The new password use the new encryption call Base64, it totally different from ROT13.Please ssh again -",
+                "- Mật khẩu mới đã bị mã hóa theo dạng BASE64, nó hoàn toàn khác với ROT13\nHãy kết nối lại với mật khẩu đã được giải mã -",
                 "fix", "WARNING"))
             return False
         else:
-            await ctx.send(embed=util.embedColor("- Wrong password, please login again -", "diff", "ERROR"))
+            await ctx.send(
+                embed=util.embedColor("- Sai mật khẩu, xin hãy kết nối lại với mật khẩu đúng -", "diff", "ERROR"))
             return False
 
     async def listAllFile(self, ctx):
         if self.normalUser:
             await ctx.send(util.syntaxHighlight("1. key1.txt\n2. rootPassword.txt\n", ""))
             await ctx.send(embed=util.embedColor(
-                "- To see the conntent of a file, please use command $cat -",
-                'diff', 'CAT COMMAND'))
+                "Để thấy được nội dung của các file, hãy sử dụng lệnh cat: $cat file_name", 'diff', 'CAT COMMAND'))
         if self.rootUser:
             await ctx.send(util.syntaxHighlight(
                 "1. key1.txt\n2. rootPassword.txt\n3. FullKey.txt\n4. Key2.txt\n5. linkToNuclearWeapon.txt\n", ""))
             await ctx.send(embed=util.embedColor(
-                "- To see the conntent of a file, please use command $cat -", 'diff', 'CAT COMMAND'))
+                "Để thấy được nội dung của các file, hãy sử dụng lệnh cat: $cat file_name", 'diff', 'CAT COMMAND'))
 
     async def printFile(self, ctx, fileName: str):
         if fileName == 'key1.txt':
             await ctx.send(embed=util.embedColor("EHC{IA-", "", "FILE: key1.txt"))
             await ctx.send(util.syntaxHighlight(
-                "Here is 1/3 of the key, good job", ""))
+                "Đây là 1/3 key, cố lên 🔥🔥🔥", ""))
         elif fileName == "rootPassword.txt":
             await ctx.send(embed=util.embedColor("tryhackme", "", "FILE: rootPassword.txt"))
-            await ctx.send(util.syntaxHighlight("Looks like the key we are looking for, but it feel so strange", ""))
+            await ctx.send(util.syntaxHighlight(
+                "Đây là mật khẩu của tài khoản quyền root, hãy đăng nhập lại với mật khẩu này để có quyền lợi cao hơn, để thoát bạn có thể dùng lệnh $exit",
+                ""))
             return True
         elif self.rootUser:
             if fileName == 'FullKey.txt':
                 await ctx.send(embed=util.embedColor("EHC{try-your-best}", "", "FILE: FullKey.txt"))
                 await ctx.send(util.syntaxHighlight(
-                    "Looks like the key we are looking for, but it feel so strange", ""))
+                    "Thật giống với Key mà chúng ta tìm, nhưng có gì đó không đúng lắm", ""))
             elif fileName == 'Key2.txt':
                 await ctx.send(embed=util.embedColor("-IS-", "", "FILE: Key2.txt"))
                 await ctx.send(util.syntaxHighlight(
-                    "We have 2/3 know, try to find the last one", ""))
+                    "Chúng ta đã tìm được 2/3 Key rồi hãy tìm nốt mảnh còn lại nào", ""))
             elif fileName == 'linkToNuclearWeapon.txt':
                 await ctx.send(embed=util.embedColor("antoineHackerLord.com\nuser: shine102\npassword: picoctf", "",
                                                      "FILE: linkToNuclearWeapon.txt"))
                 await ctx.send(util.syntaxHighlight(
-                    "A website huh, look weird, you should $scan it first to get the port of it", ""))
+                    "1 website xuất hiện, trông thật đáng nghi, bạn hãy $scan để tìm cách kết nối tới nó trước", ""))
         else:
-            await ctx.send(embed=util.embedColor("- No such file exists - ", "diff", "ERROR"))
+            await ctx.send(embed=util.embedColor("- Không có file nào như vậy tồn tại - ", "diff", "ERROR"))
         return True
 
     async def cat(self, ctx, fileName: str):
         if fileName == self.BREAK_FILE and self.ROOT_PASS == "tryhackme":
             port80.ROOT_PASS = self.UPDATE_ROOT_DECODE_PASS
-            string = "The computer recognizes unauthorized entry, automatically exit and change the login password. Please ssh back to port 22 to find the new password"
+            string = "Máy tính nhận ra sự xâm phạm trái phép, tự động thực hiện giao thức trục xuất và thay đổi mật khẩu của root user."
             await ctx.send(embed=util.embedColor(string, "", "WARNING"))
+            await ctx.send(util.syntaxHighlight(
+                "Không hay rồi, chúng ta sẽ phải quay lại nơi lưu trữ mật khẩu thay đổi vậy, theo như máy tính quét thì nó nằm ở port 22, hãy đến đó và lấy mật khẩu thay đổi",
+                ""))
             return False
         return await self.printFile(ctx, fileName)

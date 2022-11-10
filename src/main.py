@@ -25,7 +25,15 @@ async def on_ready():  # event call when the bot is ready to use
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
-        await ctx.send(embed=embedColor("- No such command found!!!! -", "diff", "ERROR"))
+        await ctx.send(embed=embedColor("- Lệnh không tồn tại!!!! -", "diff", "ERROR"))
+
+
+#
+#
+# @bot.command()
+# async def red_team(member: discord.Member = None):
+#     channel = await member.author.create_dm()
+#     await channel.send("Please enter $start to begin the mission")
 
 
 bot.run(os.getenv("TOKEN"))

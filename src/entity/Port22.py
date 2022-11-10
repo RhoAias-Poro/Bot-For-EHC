@@ -16,19 +16,21 @@ class port22:
         pass
 
     async def loginCheck(self, ctx):
-        await ctx.send(util.syntaxHighlight(f"Login to {self.host} port 22 successfully\n", ""))
+        await ctx.send(util.syntaxHighlight(f"Kết nối tới {self.host} port 22 thành công\n", ""))
         await ctx.send(
-            embed=util.embedColor("- This is where the next changed password is hidden. Hurry and find it -", 'diff',
-                                  'PORT 22'))
+            embed=util.embedColor(
+                "- Khi mà máy tính nhận ra sự hiện diện của bạn, nó sẽ tự động thay đổi mật khẩu của root user. Đây là nơi lưu trữ những mật khẩu đó. Hãy nhanh chóng tìm nó -",
+                'diff',
+                'PORT 22'))
         await ctx.send(embed=util.embedColor(
-            "- When you have access to the host machine, you should do the command $ls to list all the file that can be -",
-            'diff', 'LS COMMAND'))
+            "- Khi kết nối tới host, bạn nên sử dụng lệnh $ls để hiện các file có trong thư mục hiện tại -",
+            'diff', 'PORT 80'))
         return True
 
     async def listAllFile(self, ctx):
         await ctx.send(util.syntaxHighlight("1. changedKey.txt\n2. changedKey.text", ""))
         await ctx.send(embed=util.embedColor(
-            "To see the conntent of a file, please use command $cat", 'diff', 'CAT COMMAND'))
+            "Để thấy được nội dung của các file, hãy sử dụng lệnh cat: $cat file_name", 'diff', 'CAT COMMAND'))
 
     async def cat(self, ctx, fileName: str):
         if fileName == 'changedKey.txt':
@@ -38,9 +40,8 @@ class port22:
             await ctx.send(embed=util.embedColor(f"{self.NEW_ENCODE_ROOT_PASS}", "", "FILE: changedKey.text"))
             await asyncio.sleep(3)
             await ctx.send(util.syntaxHighlight(
-                "The new password uses modern encryption called Base64, it is totally different from ROT13. Please "
-                "encrypt it and login port 80 again",
+                "Mật khẩu mới đã bị mã hóa theo dạng BASE64, nó hoàn toàn khác với ROT13. Hãy giải mã nó và sử dụng lệnh $exit để đăng xuất và kết nối tới port 80 với mật khẩu đã thay đổi",
                 ""))
         else:
-            await ctx.send(embed=util.embedColor("- File not found, please try again - ", "diff", "ERROR"))
+            await ctx.send(embed=util.embedColor("- Không file nào như vậy tồn tại - ", "diff", "ERROR"))
         return True
