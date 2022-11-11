@@ -104,7 +104,7 @@ class port443:
             string = '''Xin chúc mừng việc tìm thấy Key của đầu đạn, Bạn đã làm rất tốt. Tuy nhiên, chúng ta vẫn lo lắng rằng chưa biết địa điểm tấn công mà hắn chọn cụ thể sẽ diễn ra ở đâu.\nNhiệm vụ cuối cùng của bạn là tìm file tài liệu chứa thông tin về nơi sẽ diễn ra cuộc tấn công và báo cáo.'''
             await ctx.send(embed=util.embedColor(string, "", "FINAL MISSION"))
             await asyncio.sleep(3)
-            string = "Theo như thông tin quét được của siêu máy tính thì nó có thể bị ẩn ở đường dẫn hiện tại. Hãy kiểm tra nó.\nNhớ rằng bạn chỉ còn 5 phút trước khi Antoine phát động tấn công. Good luck !\n(P/s: Cái nàyc có thể giúp ích: https://devconnected.com/how-to-show-hidden-files-on-linux/. Nhưng mà câu lệnh là: ls -a 😜)"
+            string = "Theo như thông tin quét được của siêu máy tính thì nó có thể bị ẩn ở đường dẫn hiện tại. Hãy kiểm tra nó.\nNhớ rằng bạn chỉ còn 5 phút trước khi Antoine phát động tấn công. Good luck !\n(P/s: Cái nàyc có thể giúp ích: https://devconnected.com/how-to-show-hidden-files-on-linux/. Nhưng mà câu lệnh là: $ls -a 😜)"
             await ctx.send(embed=util.embedColor(string, "", "HINT FOR YOU"))
 
         elif fileName == 'antoineHackerLordTest.txt':

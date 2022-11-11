@@ -28,12 +28,14 @@ async def on_command_error(ctx, error):
         await ctx.send(embed=embedColor("- Lệnh không tồn tại!!!! -", "diff", "ERROR"))
 
 
-#
-#
-# @bot.command()
-# async def red_team(member: discord.Member = None):
-#     channel = await member.author.create_dm()
-#     await channel.send("Please enter $start to begin the mission")
+@bot.command()
+async def red_team(ctx):
+    if ctx.channel.id == int(os.getenv("ID2")):
+        channel = await ctx.author.create_dm()
+        await channel.send(
+            embed=embedColor("Welcome to the dark side. Please enter $start to begin the mission", 'diff', "RED TEAM"))
+    else:
+        await ctx.send("Lỗi vì nhập lệnh không đúng channel")
 
 
 bot.run(os.getenv("TOKEN"))

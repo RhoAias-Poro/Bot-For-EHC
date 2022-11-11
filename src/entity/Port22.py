@@ -24,7 +24,7 @@ class port22:
                 'PORT 22'))
         await ctx.send(embed=util.embedColor(
             "- Khi kết nối tới host, bạn nên sử dụng lệnh $ls để hiện các file có trong thư mục hiện tại -",
-            'diff', 'PORT 80'))
+            'diff', 'PORT 22'))
         return True
 
     async def listAllFile(self, ctx):
