@@ -78,6 +78,7 @@ class port443:
 
         if password.content == self.PASSWORD:  # same pass
             await ctx.send(util.syntaxHighlight(f"Đăng nhập tới {self.host} qua port 443 thành công\n", ""))
+            await asyncio.sleep(4)
             await ctx.send(embed=util.embedColor(
                 "- Khi kết nối tới host, bạn nên sử dụng lệnh $ls để hiện các file có trong thư mục hiện tại -",
                 'diff', 'PORT 443'))
@@ -90,6 +91,7 @@ class port443:
     async def listAllFile(self, ctx):
         await ctx.send(
             util.syntaxHighlight("1. base.html\n2. script.js\n3. style.css\n4. antoineHackerLordTest.txt\n", ""))
+        await asyncio.sleep(4)
         await ctx.send(embed=util.embedColor(
             "Để thấy được nội dung của các file, hãy sử dụng lệnh cat: $cat file_name", 'diff', 'CAT COMMAND'))
 
@@ -109,11 +111,13 @@ class port443:
 
         elif fileName == 'antoineHackerLordTest.txt':
             await ctx.send(embed=util.embedColor("YOU ARE LATE", "", "FILE: antoineHackerLordTest.txt"))
+            await asyncio.sleep(3)
             await ctx.send(util.syntaxHighlight(
                 "Không ổn, thời gian sắp hết, bạn phải nhanh lên!!!!!",
                 ""))
         elif fileName == '.secret.txt':
             await ctx.send(embed=util.embedColor(self.YOUTUBE, "", "FILE: .secret.txt"))
+            await asyncio.sleep(4)
             await ctx.send(
                 util.syntaxHighlight(
                     "Lại 1 loại mã hóa khác. Phân tích cho thấy nó giống như Base64 nhưng không phải. Có lẽ, Base 64/2=? ",
@@ -121,6 +125,7 @@ class port443:
         elif fileName == '.nothing_special_here.txt':
             await ctx.send(embed=util.embedColor(self.FINALE, "", "FILE: .nothing_special_here.txt"))
             await ctx.send(file=discord.File('C:\\Users\ADMIN\Pictures\QRCODE.png'))
+            await asyncio.sleep(4)
             await ctx.send(util.syntaxHighlight(
                 "Hình ảnh này thật là kì lạ, đến siêu máy tính không thể phân tích được nó, bạn có thể sử dụng Google Lens để tìm hiểu thêm và nhớ, double of something is the best 🐧.\nĐã gần đến hồi kết của nhiệm vụ này rồi, chúng tôi không thể trợ giúp được gì thêm, hãy nộp Key và địa điểm để thoát khỏi kế hoạch của hắn nào",
                 ""))
@@ -132,3 +137,6 @@ class port443:
         await ctx.send(util.syntaxHighlight(
             "1. base.html\n2. script.js\n3. style.css\n4. antoineHackerLordTest.txt\n5. .secret.txt\n6. .nothing_special_here.txt",
             ""))
+        await asyncio.sleep(4)
+        await ctx.send(embed=util.embedColor(
+            "Để thấy được nội dung của các file, hãy sử dụng lệnh cat: $cat file_name", 'diff', 'CAT COMMAND'))

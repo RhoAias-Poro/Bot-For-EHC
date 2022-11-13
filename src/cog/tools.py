@@ -33,21 +33,18 @@ class Tools(commands.Cog):
     @commands.dm_only()
     async def start(self, ctx):
         users[ctx.author.id] = Users()
-        line1 = await ctx.send(embed=util.embedColor(
+        await ctx.send(embed=util.embedColor(
             f'Rất mừng khi được gặp lại trong nhiệm vụ lần này, EHC đã xác nhận những cuộc tấn công mạng tới máy chủ của chính phủ nhằm chiếm đoạt lấy Key, là chìa khóa để phóng 1 đầu đạn hạt nhân, nếu hẵn có thể kích hoạt được thì nó sẽ mở ra 1 cuộc thảm sát hạt nhân và là cơ sở để các quốc gia cắn xé lẫn nhau, trật tự bị đảo lộn, hòa bình sẽ không còn tồn tại nữa\n',
             "", "STORY"))
         await asyncio.sleep(10)
-        line2 = await ctx.send(embed=util.embedColor(
+        await ctx.send(embed=util.embedColor(
             'Có một vài dấu vết hacker đã để lại mà chúng tôi có thể tìm thấy được. EHC nghi ngờ rằng Antoine, 1 phần tử khủng bố, người đã kích động cách mạng bằng cách thực hiện các hành động khủng bố ở nhiều quốc gia là người đứng sau tấm màn.\n',
             "", "STORY"))
         await asyncio.sleep(7)
-        line3 = await ctx.send(embed=util.embedColor(
-            'Nhiệm vụ của bạn, việc bạn chọn chấp nhận, đó là thâm nhập vào máy chủ của hắn, đoạt lại Key cũng như tìm địa điểm của nơi hắn định tấn công. Nếu như bạn bị bắt hoặc bị giết trong thời gian thực thi nhiệm vụ, EHC sẽ từ chối mọi thông tin liên quan tới hành động nào của bạn. Chúc may mắn, tin nhắn này sẽ tự hủy sau 10 giây.\n',
+        await ctx.send(embed=util.embedColor(
+            'Nhiệm vụ của bạn, việc bạn chọn chấp nhận, đó là thâm nhập vào máy chủ của hắn, đoạt lại Key cũng như tìm địa điểm của nơi hắn định tấn công. Nếu như bạn bị bắt hoặc bị giết trong thời gian thực thi nhiệm vụ, EHC sẽ từ chối mọi thông tin liên quan tới hành động nào của bạn. Chúc may mắn.\n',
             "", "MISSION"))
         await asyncio.sleep(10)
-        await line1.delete()  # delete the lines
-        await line2.delete()
-        await line3.delete()
         await ctx.send(embed=util.embedColor(
             "Một vài note cho bạn: \n  - Key mà bạn cần tìm là: EHC{...-...-...}\n  - Hãy cẩn thận các dấu cách(space) trong câu lệnh, chúng rất là quan trong.\n  - Nếu bạn gặp phải bất kì loại mã hóa nào thì bạn có thể tìm kiếm những phương thức giải mã trực tuyến với từ khóa như 'encryption_name + decoder + online'\n\nOK LET'S BEGIN",
             "fix", "NOTE"))
@@ -64,12 +61,14 @@ class Tools(commands.Cog):
     async def scan(self, ctx, hostStr: str):
         if hostStr == self.host:  # if the correct host then return the portal
             await ctx.send(embed=util.embedColor(f"{self.host} trả về port: 22, 80\n", "", "SCAN RESULT"))
+            await asyncio.sleep(4)
             await ctx.send(embed=util.embedColor(
                 'Để có thể kết nối tới host bạn cần sử dụng lệnh ssh(một giao thức mạng có thể cung cấp 1 phương pháp kết nối bảo mật tới 1 máy tính từ xa\nĐể hiểu hơn, bạn có thể truy cập vào đường link: '
                 + 'https://www.techtarget.com/searchsecurity/definition/Secure-Shell\n'
                 + 'lệnh SSH: $ssh host address -p port_number\n', "", "SSH COMMAND"))
         elif hostStr == self.website:
             await ctx.send(embed=util.embedColor(f"{self.website} trả về port: 443\n", "", "SCAN RESULT"))
+            await asyncio.sleep(4)
             await ctx.send(embed=util.embedColor(
                 'Để kết nối tới website thì bạn có thể sử dụng lệnh ssh như lúc trước nhưng có 1 vài sự thay đổi '
                 + 'lệnh SSH: $ssh UserName@SSHserver.example.com  -p port_number\n', "", "SSH COMMAND"))

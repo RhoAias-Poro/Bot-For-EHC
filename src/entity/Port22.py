@@ -22,6 +22,7 @@ class port22:
                 "- Khi mà máy tính nhận ra sự hiện diện của bạn, nó sẽ tự động thay đổi mật khẩu của root user. Đây là nơi lưu trữ những mật khẩu đó. Hãy nhanh chóng tìm nó -",
                 'diff',
                 'PORT 22'))
+        await asyncio.sleep(4)
         await ctx.send(embed=util.embedColor(
             "- Khi kết nối tới host, bạn nên sử dụng lệnh $ls để hiện các file có trong thư mục hiện tại -",
             'diff', 'PORT 22'))
@@ -29,16 +30,18 @@ class port22:
 
     async def listAllFile(self, ctx):
         await ctx.send(util.syntaxHighlight("1. changedKey.txt\n2. changedKey.text", ""))
+        await asyncio.sleep(4)
         await ctx.send(embed=util.embedColor(
             "Để thấy được nội dung của các file, hãy sử dụng lệnh cat: $cat file_name", 'diff', 'CAT COMMAND'))
 
     async def cat(self, ctx, fileName: str):
         if fileName == 'changedKey.txt':
             await ctx.send(embed=util.embedColor(f"{self.FAKE_ENCODE_ROOT_PASS}", "", "FILE: changedKey.txt"))
+            await asyncio.sleep(4)
             await ctx.send(util.syntaxHighlight("It looks like a link to somewhere, try to open it", ""))
         elif fileName == 'changedKey.text':
             await ctx.send(embed=util.embedColor(f"{self.NEW_ENCODE_ROOT_PASS}", "", "FILE: changedKey.text"))
-            await asyncio.sleep(3)
+            await asyncio.sleep(4)
             await ctx.send(util.syntaxHighlight(
                 "Mật khẩu mới đã bị mã hóa theo dạng BASE64, nó hoàn toàn khác với ROT13. Hãy giải mã nó và sử dụng lệnh $exit để đăng xuất và kết nối tới port 80 với mật khẩu đã thay đổi",
                 ""))

@@ -1,3 +1,5 @@
+import asyncio
+
 from dotenv import load_dotenv
 
 from src.utils import functions as util
@@ -38,6 +40,7 @@ class port80:
 
         if password.content == self.DECODE_NORMAL_PASS:  # same pass
             await ctx.send(util.syntaxHighlight(f"Đăng nhập tới {self.host} port 80 như normal user thành công\n", ""))
+            await asyncio.sleep(4)
             await ctx.send(embed=util.embedColor(
                 "- Khi kết nối tới host, bạn nên sử dụng lệnh $ls để hiện các file có trong thư mục hiện tại -",
                 'diff', 'PORT 80'))
@@ -50,6 +53,7 @@ class port80:
             return False
         elif password.content == self.ROOT_PASS:
             await ctx.send(util.syntaxHighlight(f"Đăng nhập tới {self.host} port 80 như root user thành công\n", ""))
+            await asyncio.sleep(4)
             await ctx.send(embed=util.embedColor(
                 "- Khi đã có quyền hạn của root user, bạn nên sử dụng lệnh $ls lại để có thể nhìn thấy các file mà từng bị ẩn đi vì không đủ quyền hạn -",
                 'diff', 'PORT 80'))
@@ -68,21 +72,25 @@ class port80:
     async def listAllFile(self, ctx):
         if self.normalUser:
             await ctx.send(util.syntaxHighlight("1. key1.txt\n2. rootPassword.txt\n", ""))
+            await asyncio.sleep(4)
             await ctx.send(embed=util.embedColor(
                 "Để thấy được nội dung của các file, hãy sử dụng lệnh cat: $cat file_name", 'diff', 'CAT COMMAND'))
         if self.rootUser:
             await ctx.send(util.syntaxHighlight(
                 "1. key1.txt\n2. rootPassword.txt\n3. FullKey.txt\n4. Key2.txt\n5. linkToNuclearWeapon.txt\n", ""))
+            await asyncio.sleep(4)
             await ctx.send(embed=util.embedColor(
                 "Để thấy được nội dung của các file, hãy sử dụng lệnh cat: $cat file_name", 'diff', 'CAT COMMAND'))
 
     async def printFile(self, ctx, fileName: str):
         if fileName == 'key1.txt':
             await ctx.send(embed=util.embedColor("EHC{IA-", "", "FILE: key1.txt"))
+            await asyncio.sleep(2)
             await ctx.send(util.syntaxHighlight(
                 "Đây là 1/3 key, cố lên 🔥🔥🔥", ""))
         elif fileName == "rootPassword.txt":
             await ctx.send(embed=util.embedColor("tryhackme", "", "FILE: rootPassword.txt"))
+            await asyncio.sleep(4)
             await ctx.send(util.syntaxHighlight(
                 "Đây là mật khẩu của tài khoản quyền root, hãy đăng nhập lại với mật khẩu này để có quyền lợi cao hơn, để thoát bạn có thể dùng lệnh $exit",
                 ""))
@@ -90,15 +98,18 @@ class port80:
         elif self.rootUser:
             if fileName == 'FullKey.txt':
                 await ctx.send(embed=util.embedColor("EHC{try-your-best}", "", "FILE: FullKey.txt"))
+                await asyncio.sleep(3)
                 await ctx.send(util.syntaxHighlight(
                     "Thật giống với Key mà chúng ta tìm, nhưng có gì đó không đúng lắm", ""))
             elif fileName == 'Key2.txt':
                 await ctx.send(embed=util.embedColor("-IS-", "", "FILE: Key2.txt"))
+                await asyncio.sleep(4)
                 await ctx.send(util.syntaxHighlight(
                     "Chúng ta đã tìm được 2/3 Key rồi hãy tìm nốt mảnh còn lại nào", ""))
             elif fileName == 'linkToNuclearWeapon.txt':
                 await ctx.send(embed=util.embedColor("antoineHackerLord.com\nuser: shine102\npassword: picoctf", "",
                                                      "FILE: linkToNuclearWeapon.txt"))
+                await asyncio.sleep(4)
                 await ctx.send(util.syntaxHighlight(
                     "1 website xuất hiện, trông thật đáng nghi, bạn hãy $scan để tìm cách kết nối tới nó trước", ""))
         else:
@@ -110,6 +121,7 @@ class port80:
             port80.ROOT_PASS = self.UPDATE_ROOT_DECODE_PASS
             string = "Máy tính nhận ra sự xâm phạm trái phép, tự động thực hiện giao thức trục xuất và thay đổi mật khẩu của root user."
             await ctx.send(embed=util.embedColor(string, "", "WARNING"))
+            await asyncio.sleep(7)
             await ctx.send(util.syntaxHighlight(
                 "Không hay rồi, chúng ta sẽ phải quay lại nơi lưu trữ mật khẩu thay đổi vậy, theo như máy tính quét thì nó nằm ở port 22, hãy đến đó và lấy mật khẩu thay đổi",
                 ""))
