@@ -1,0 +1,6 @@
+.git
+.gitignore
+LISENCE
+README.md
+
+**/*.pyc
