@@ -36,7 +36,7 @@ class port443:
     CSS = '''
     body {
         background-color: lightblue;
-        /* NO1} */
+        /* at_aga1n */
           }'''
     JS = '''function detonate()
      {
@@ -103,7 +103,7 @@ class port443:
         elif fileName == 'style.css':
             await ctx.send(embed=util.embedColor(self.CSS, "css", "FILE: style.css"))
             await asyncio.sleep(5)
-            string = '''Xin chúc mừng việc tìm thấy Key của đầu đạn, Bạn đã làm rất tốt. Tuy nhiên, chúng ta vẫn lo lắng rằng chưa biết địa điểm tấn công mà hắn chọn cụ thể sẽ diễn ra ở đâu.\nNhiệm vụ cuối cùng của bạn là tìm file tài liệu chứa thông tin về nơi sẽ diễn ra cuộc tấn công và báo cáo.'''
+            string = '''Chúc mừng, bạn đã tìm thấy Key của đầu đạn. Tuy nhiên, chúng ta vẫn lo lắng rằng chưa biết địa điểm tấn công mà hắn chọn cụ thể sẽ diễn ra ở đâu.\nNhiệm vụ cuối cùng của bạn là tìm file tài liệu chứa thông tin về nơi sẽ diễn ra cuộc tấn công và báo cáo.\n CÁCH NỘP KEY VÀ ĐỊA ĐIỂM: EHC{key_location}'''
             await ctx.send(embed=util.embedColor(string, "", "FINAL MISSION"))
             await asyncio.sleep(3)
             string = "Theo như thông tin quét được của siêu máy tính thì nó có thể bị ẩn ở đường dẫn hiện tại. Hãy kiểm tra nó.\nNhớ rằng bạn chỉ còn 5 phút trước khi Antoine phát động tấn công. Good luck !\n(P/s: Cái nàyc có thể giúp ích: https://devconnected.com/how-to-show-hidden-files-on-linux/. Nhưng mà câu lệnh là: $ls -a 😜)"
