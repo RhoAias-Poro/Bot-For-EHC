@@ -84,7 +84,7 @@ class port80:
 
     async def printFile(self, ctx, fileName: str):
         if fileName == 'key1.txt':
-            await ctx.send(embed=util.embedColor("EHC{IA-", "", "FILE: key1.txt"))
+            await ctx.send(embed=util.embedColor("mak3_", "", "FILE: key1.txt"))
             await asyncio.sleep(2)
             await ctx.send(util.syntaxHighlight(
                 "Đây là 1/3 key, cố lên 🔥🔥🔥", ""))
@@ -97,12 +97,12 @@ class port80:
             return True
         elif self.rootUser:
             if fileName == 'FullKey.txt':
-                await ctx.send(embed=util.embedColor("EHC{try-your-best}", "", "FILE: FullKey.txt"))
+                await ctx.send(embed=util.embedColor("EHC{try_your_best}", "", "FILE: FullKey.txt"))
                 await asyncio.sleep(3)
                 await ctx.send(util.syntaxHighlight(
                     "Thật giống với Key mà chúng ta tìm, nhưng có gì đó không đúng lắm", ""))
             elif fileName == 'Key2.txt':
-                await ctx.send(embed=util.embedColor("-IS-", "", "FILE: Key2.txt"))
+                await ctx.send(embed=util.embedColor("IA_gr3", "", "FILE: Key2.txt"))
                 await asyncio.sleep(4)
                 await ctx.send(util.syntaxHighlight(
                     "Chúng ta đã tìm được 2/3 Key rồi hãy tìm nốt mảnh còn lại nào", ""))
