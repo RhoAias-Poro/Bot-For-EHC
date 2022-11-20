@@ -40,7 +40,7 @@ class port443:
           }'''
     JS = '''function detonate()
      {
-       alert("Self destructed!");
+       alert("Self destructed!")
      }'''
     YOUTUBE = 'NB2HI4DTHIXS653XO4XHS33VOR2WEZJOMNXW2L3XMF2GG2B7OY6WIULXGR3TSV3HLBRVC==='
     WEBSITE = 'antoineHackerLord.com'
