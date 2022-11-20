@@ -124,7 +124,7 @@ class port443:
                     ""))
         elif fileName == '.nothing_special_here.txt':
             await ctx.send(embed=util.embedColor(self.FINALE, "", "FILE: .nothing_special_here.txt"))
-            await ctx.send(file=discord.File('C:\\Users\ADMIN\Pictures\QRCODE.png'))
+            await ctx.send(file=discord.File('qrcode.png'))
             await asyncio.sleep(4)
             await ctx.send(util.syntaxHighlight(
                 "Hình ảnh này thật là kì lạ, đến siêu máy tính không thể phân tích được nó, bạn có thể sử dụng Google Lens để tìm hiểu thêm và nhớ, double of something is the best 🐧.\nĐã gần đến hồi kết của nhiệm vụ này rồi, chúng tôi không thể trợ giúp được gì thêm, hãy nộp Key và địa điểm để thoát khỏi kế hoạch của hắn nào",

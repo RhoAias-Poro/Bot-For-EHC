@@ -19,7 +19,7 @@ bot = commands.Bot(command_prefix=os.getenv("PREFIX"), intents=intents)
 @bot.event
 async def on_ready():  # event call when the bot is ready to use
     print(f"Logged in as : {bot.user.name}")
-    await bot.load_extension(f'cog.tools')
+    await bot.load_extension(f'src.cog.tools')
 
 
 @bot.event
