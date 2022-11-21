@@ -120,7 +120,7 @@ class Tools(commands.Cog):
                             users[ctx.author.id].Login = await users[ctx.author.id].port.loginCheck(ctx)
                     case _:
                         await ctx.send(
-                            embed=util.embedColor(f"Host hiện tại không có port {portStr} để kết nối\n'", "diff",
+                            embed=util.embedColor(f"Host hiện tại không có port {portNum} để kết nối\n", "diff",
                                                   "ERROR"))
 
     @ssh.error
