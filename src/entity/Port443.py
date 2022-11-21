@@ -45,10 +45,9 @@ class port443:
     WEBSITE = 'antoineHackerLord.com'
     FINALE = """
     - COMPLETED ATTACKS: 
-        +) 29/02/2019: SPREAD OUT CORONA VIRUS
-        +) 20/10/2020: HIJACK INTERNATIONAL AIRPLANE IN CHINA
-        +) 09/11/2021: BOMB AT EIFEL TOWER IN FRANCE
-
+        +) 29/02/2009: OBAMA BECAME PRESIDENT
+        +) 01/04/2013: Cambridge Analytica
+        +) 08/03/2014: MH370 DISAPPEARED
     - PLANNING ATTACKS: 
         +) ??/??/????: FPT UNIVERSITY (FOR SECURITY REASON ONLY SHOW THE ENCODED DATE)"""
     PASSWORD = 'picoctf'
