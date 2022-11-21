@@ -103,7 +103,7 @@ class port80:
             return True
         elif self.rootUser:
             if fileName == 'FullKey.txt':
-                await ctx.send(embed=util.embedColor("EHC{try_your_best}", "", "FILE: FullKey.txt"))
+                await ctx.send(embed=util.embedColor("eHc{trY-yoUr_bezt}", "", "FILE: FullKey.txt"))
                 await asyncio.sleep(3)
                 await ctx.send(util.syntaxHighlight(
                     "Thật giống với Key mà chúng ta tìm, nhưng có gì đó không đúng lắm", ""))

@@ -1,6 +1,5 @@
 import asyncio
 
-import discord
 from dotenv import load_dotenv
 
 from src.utils import functions as util
@@ -106,7 +105,7 @@ class port443:
         elif fileName == 'style.css':
             await ctx.send(embed=util.embedColor(self.CSS, "css", "FILE: style.css"))
             await asyncio.sleep(5)
-            string = '''Chúc mừng, bạn đã tìm thấy Key của đầu đạn. Tuy nhiên, chúng ta vẫn lo lắng rằng chưa biết địa điểm tấn công mà hắn chọn cụ thể sẽ diễn ra ở đâu.\nNhiệm vụ cuối cùng của bạn là tìm file tài liệu chứa thông tin về nơi sẽ diễn ra cuộc tấn công và báo cáo.\n CÁCH NỘP KEY VÀ ĐỊA ĐIỂM: EHC{key_location}'''
+            string = '''Chúc mừng, bạn đã tìm thấy Key của đầu đạn. Những đặc vụ khác cũng đã biết địa điểm tấn công nhưng chúng ta vẫn lo lắng rằng chưa biết thời gian bắt đầu tấn công mà hắn chọn sẽ diễn ra bao giờ.\nNhiệm vụ cuối cùng của bạn là tìm file tài liệu chứa thông tin về thời gian sẽ diễn ra cuộc tấn công và báo cáo lại.\n CÁCH NỘP KEY VÀ Thời gian: EHC{key_DD/MM/YYYY}'''
             await ctx.send(embed=util.embedColor(string, "", "FINAL MISSION"))
             await asyncio.sleep(3)
             string = "Theo như thông tin quét được của siêu máy tính thì nó có thể bị ẩn ở đường dẫn hiện tại. Hãy kiểm tra nó.\nNhớ rằng bạn chỉ còn 5 phút trước khi Antoine phát động tấn công. Good luck !\n(P/s: Cái nàyc có thể giúp ích: https://devconnected.com/how-to-show-hidden-files-on-linux/. Nhưng mà câu lệnh là: $ls -a 😜)"
@@ -127,10 +126,18 @@ class port443:
                     ""))
         elif fileName == '.nothing_special_here.txt':
             await ctx.send(embed=util.embedColor(self.FINALE, "", "FILE: .nothing_special_here.txt"))
-            await ctx.send(file=discord.File('C:\\Users\ADMIN\Pictures\QRCODE.png'))
+            # await ctx.send(file=discord.File('QRCODE.png'))
+            #
+            # await ctx.send(util.syntaxHighlight(
+            #     "Hình ảnh này thật là kì lạ, đến siêu máy tính không thể phân tích được nó, bạn có thể sử dụng Google Lens để tìm hiểu thêm.\nĐã gần đến hồi kết của nhiệm vụ này rồi, chúng tôi không thể trợ giúp được gì thêm, hãy nộp Key và địa điểm để thoát khỏi kế hoạch của hắn nào",
+            #     ""))
+            await asyncio.sleep(4)
+            await ctx.send(
+                embed=util.embedColor("Lúc bắt đầu cũng sẽ là lúc mọi thứ chấm dứt, hãy chấp nhận đi. TAO ĐÃ THẮNG",
+                                      "diff", "REVENGE"))
             await asyncio.sleep(4)
             await ctx.send(util.syntaxHighlight(
-                "Hình ảnh này thật là kì lạ, đến siêu máy tính không thể phân tích được nó, bạn có thể sử dụng Google Lens để tìm hiểu thêm và nhớ, double of something is the best 🐧.\nĐã gần đến hồi kết của nhiệm vụ này rồi, chúng tôi không thể trợ giúp được gì thêm, hãy nộp Key và địa điểm để thoát khỏi kế hoạch của hắn nào",
+                "Ôi không, sao ta lại không nghĩ ra, thời gian tấn công sẽ rơi vào lúc thành lập của EHC, bạn hãy tìm nó ...., tìm lấ.....",
                 ""))
         else:
             await ctx.send(embed=util.embedColor("- Không file nào như vậy tồn tại - ", "diff", "ERROR"))

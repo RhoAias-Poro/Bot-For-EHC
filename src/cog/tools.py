@@ -46,7 +46,7 @@ class Tools(commands.Cog):
             "", "MISSION"))
         await asyncio.sleep(10)
         await ctx.send(embed=util.embedColor(
-            "Một vài note cho bạn: \n  - Key mà bạn cần tìm là: EHC{...-...-...}\n  - Hãy cẩn thận các dấu cách(space) trong câu lệnh, chúng rất là quan trong.\n  - Nếu bạn gặp phải bất kì loại mã hóa nào thì bạn có thể tìm kiếm những phương thức giải mã trực tuyến với từ khóa như 'encryption_name + decoder + online'\n\nOK LET'S BEGIN",
+            "Một vài note cho bạn: \n  - Key mà bạn cần tìm là: EHC{..._..._..._...}\n  - Hãy cẩn thận các dấu cách(space) trong câu lệnh, chúng rất là quan trong.\n  - Nếu bạn gặp phải bất kì loại mã hóa nào thì bạn có thể tìm kiếm những phương thức giải mã trực tuyến với từ khóa như 'encryption_name + decoder + online'\n\nOK LET'S BEGIN",
             "fix", "NOTE"))
         await ctx.send(embed=util.embedColor(
             f"Host address: {self.host}\nPassword: {self.encodeNormalPass}\nCó vẻ như mật khẩu đã bị mã hóa bằng ROT13, hãy thử giải mã nó 😥",
