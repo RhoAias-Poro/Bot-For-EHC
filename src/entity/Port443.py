@@ -50,7 +50,7 @@ class port443:
         +) 09/11/2021: BOMB AT EIFEL TOWER IN FRANCE
 
     - PLANNING ATTACKS: 
-        +) 26/11/2022 AT ********* ********* (FOR SECURITY REASON ONLY SHOW THE ENCODED IMAGE)"""
+        +) ??/??/????: FPT UNIVERSITY (FOR SECURITY REASON ONLY SHOW THE ENCODED DATE)"""
     PASSWORD = 'picoctf'
     user = 'shine102'
 
@@ -105,7 +105,7 @@ class port443:
         elif fileName == 'style.css':
             await ctx.send(embed=util.embedColor(self.CSS, "css", "FILE: style.css"))
             await asyncio.sleep(5)
-            string = '''Chúc mừng, bạn đã tìm thấy Key của đầu đạn. Những đặc vụ khác cũng đã biết địa điểm tấn công nhưng chúng ta vẫn lo lắng rằng chưa biết thời gian bắt đầu tấn công mà hắn chọn sẽ diễn ra bao giờ.\nNhiệm vụ cuối cùng của bạn là tìm file tài liệu chứa thông tin về thời gian sẽ diễn ra cuộc tấn công và báo cáo lại.\n CÁCH NỘP KEY VÀ Thời gian: EHC{key_DD/MM/YYYY}'''
+            string = '''Chúc mừng, bạn đã tìm thấy Key của đầu đạn. Những đặc vụ khác cũng đã biết địa điểm tấn công nhưng chúng ta vẫn lo lắng rằng chưa biết thời gian bắt đầu tấn công mà hắn chọn sẽ diễn ra bao giờ.\nNhiệm vụ cuối cùng của bạn là tìm file tài liệu chứa thông tin về thời gian sẽ diễn ra cuộc tấn công và báo cáo lại.\nCÁCH NỘP KEY VÀ Thời gian: EHC{key_DD/MM/YYYY}'''
             await ctx.send(embed=util.embedColor(string, "", "FINAL MISSION"))
             await asyncio.sleep(3)
             string = "Theo như thông tin quét được của siêu máy tính thì nó có thể bị ẩn ở đường dẫn hiện tại. Hãy kiểm tra nó.\nNhớ rằng bạn chỉ còn 5 phút trước khi Antoine phát động tấn công. Good luck !\n(P/s: Cái nàyc có thể giúp ích: https://devconnected.com/how-to-show-hidden-files-on-linux/. Nhưng mà câu lệnh là: $ls -a 😜)"
@@ -137,7 +137,7 @@ class port443:
                                       "diff", "REVENGE"))
             await asyncio.sleep(4)
             await ctx.send(util.syntaxHighlight(
-                "Ôi không, sao ta lại không nghĩ ra, thời gian tấn công sẽ rơi vào lúc thành lập của EHC, bạn hãy tìm nó ...., tìm lấ.....",
+                "Ôi không, sao ta lại không nghĩ ra, thời gian tấn công sẽ rơi vào lúc thành lập của EHC, bạn hãy tìm nó ...., tìm lấ.....\nLINK RETURN: https://fptu-ethical-hackers-club.github.io/",
                 ""))
         else:
             await ctx.send(embed=util.embedColor("- Không file nào như vậy tồn tại - ", "diff", "ERROR"))
