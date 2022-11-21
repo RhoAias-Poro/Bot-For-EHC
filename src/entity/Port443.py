@@ -79,6 +79,9 @@ class port443:
         if password.content == self.PASSWORD:  # same pass
             await ctx.send(util.syntaxHighlight(f"Đăng nhập tới {self.host} qua port 443 thành công\n", ""))
             await asyncio.sleep(4)
+            await ctx.send(
+                embed=util.embedColor("- Hãy nhớ rằng mỗi câu lệnh đều bắt đầu bằng $ -", "diff", "PREFIX REMINDER"))
+            await asyncio.sleep(4)
             await ctx.send(embed=util.embedColor(
                 "- Khi kết nối tới host, bạn nên sử dụng lệnh $ls để hiện các file có trong thư mục hiện tại -",
                 'diff', 'PORT 443'))
