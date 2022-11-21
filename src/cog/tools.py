@@ -42,16 +42,18 @@ class Tools(commands.Cog):
             "", "STORY"))
         await asyncio.sleep(7)
         await ctx.send(embed=util.embedColor(
-            'Nhiệm vụ của bạn, việc bạn chọn chấp nhận, đó là thâm nhập vào máy chủ của hắn, đoạt lại Key cũng như tìm địa điểm của nơi hắn định tấn công. Nếu như bạn bị bắt hoặc bị giết trong thời gian thực thi nhiệm vụ, EHC sẽ từ chối mọi thông tin liên quan tới hành động nào của bạn. Chúc may mắn.\n',
+            'Nhiệm vụ của bạn, dù bạn chọn chấp nhận, đó là thâm nhập vào máy chủ của hắn, đoạt lại Key cũng như tìm thời gian diễn ra cuộc tấn công. Nếu như bạn bị bắt hoặc bị giết trong thời gian thực thi nhiệm vụ, EHC sẽ từ chối mọi thông tin liên quan tới hành động nào của bạn. Chúc may mắn.\n',
             "", "MISSION"))
         await asyncio.sleep(10)
         await ctx.send(embed=util.embedColor(
             "Một vài note cho bạn: \n  - Key mà bạn cần tìm là: EHC{..._..._..._...}\n  - Hãy cẩn thận các dấu cách(space) trong câu lệnh, chúng rất là quan trong.\n  - Nếu bạn gặp phải bất kì loại mã hóa nào thì bạn có thể tìm kiếm những phương thức giải mã trực tuyến với từ khóa như 'encryption_name + decoder + online'\n\nOK LET'S BEGIN",
             "fix", "NOTE"))
+        await asyncio.sleep(5)
         await ctx.send(embed=util.embedColor(
             f"Host address: {self.host}\nPassword: {self.encodeNormalPass}\nCó vẻ như mật khẩu đã bị mã hóa bằng ROT13, hãy thử giải mã nó 😥",
             "",
             "INFORMATION YOU NEED"))
+        await asyncio.sleep(5)
         await ctx.send(embed=util.embedColor(
             "Việc bạn cần làm tiếp theo đó là scan host hoặc website để có thể tìm được ra cổng để có thể kết nối tới\nĐể scan được 1 host thì bạn có thể sử dụng lệnh scan: $scan host/address/website",
             "", "SCAN COMMAND"))
@@ -153,13 +155,14 @@ class Tools(commands.Cog):
     @commands.dm_only()
     async def ls(self, ctx, *args):
         if users[ctx.author.id].Login:
-            if len(args) != 1:
+            if len(args) == 0:
                 await users[ctx.author.id].port.listAllFile(ctx)
             else:
-                if args[0] == "-a" and users[ctx.author.id].portNumber == '443':
+                if args[0] == "-a" and users[ctx.author.id].portNumber == '443' and len(args) == 1:
                     await users[ctx.author.id].port.listAllHiddenFile(ctx)
                 elif args[0] == "-a" and (
-                        users[ctx.author.id].portNumber == '80' or users[ctx.author.id].portNumber == '22'):
+                        users[ctx.author.id].portNumber == '80' or users[ctx.author.id].portNumber == '22') and len(
+                    args) == 1:
                     await users[ctx.author.id].port.listAllFile(ctx)
                 else:
                     raise commands.CommandInvokeError(self, Exception)

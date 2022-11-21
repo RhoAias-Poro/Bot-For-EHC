@@ -45,9 +45,11 @@ class port443:
     WEBSITE = 'antoineHackerLord.com'
     FINALE = """
     - COMPLETED ATTACKS: 
-        +) 29/02/2009: OBAMA BECAME PRESIDENT
-        +) 01/04/2013: Cambridge Analytica
+        +) 11/09/2001: Suicide terrorist attack in the US
         +) 08/03/2014: MH370 DISAPPEARED
+        +) 13/11/2015: Bomb in Paris, France
+        +) 26/09/2016: Uber's biggest breach
+        +) 12/05/2017: Distribute ransomware WannaCry 
     - PLANNING ATTACKS: 
         +) ??/??/????: FPT UNIVERSITY (FOR SECURITY REASON ONLY SHOW THE ENCODED DATE)"""
     PASSWORD = 'picoctf'
