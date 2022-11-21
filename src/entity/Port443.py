@@ -1,6 +1,5 @@
 import asyncio
 
-import discord
 from dotenv import load_dotenv
 
 from src.utils import functions as util
@@ -46,12 +45,13 @@ class port443:
     WEBSITE = 'antoineHackerLord.com'
     FINALE = """
     - COMPLETED ATTACKS: 
-        +) 29/02/2019: SPREAD OUT CORONA VIRUS
-        +) 20/10/2020: HIJACK INTERNATIONAL AIRPLANE IN CHINA
-        +) 09/11/2021: BOMB AT EIFEL TOWER IN FRANCE
-
+        +) 11/09/2001: Suicide terrorist attack in the US
+        +) 08/03/2014: MH370 DISAPPEARED
+        +) 13/11/2015: Bomb in Paris, France
+        +) 26/09/2016: Uber's biggest breach
+        +) 12/05/2017: Distribute ransomware WannaCry 
     - PLANNING ATTACKS: 
-        +) 26/11/2022 AT ********* ********* (FOR SECURITY REASON ONLY SHOW THE ENCODED IMAGE)"""
+        +) ??/??/????: FPT UNIVERSITY (FOR SECURITY REASON ONLY SHOW THE ENCODED DATE)"""
     PASSWORD = 'picoctf'
     user = 'shine102'
 
@@ -79,6 +79,9 @@ class port443:
         if password.content == self.PASSWORD:  # same pass
             await ctx.send(util.syntaxHighlight(f"Đăng nhập tới {self.host} qua port 443 thành công\n", ""))
             await asyncio.sleep(4)
+            await ctx.send(
+                embed=util.embedColor("- Hãy nhớ rằng mỗi câu lệnh đều bắt đầu bằng $ -", "diff", "PREFIX REMINDER"))
+            await asyncio.sleep(4)
             await ctx.send(embed=util.embedColor(
                 "- Khi kết nối tới host, bạn nên sử dụng lệnh $ls để hiện các file có trong thư mục hiện tại -",
                 'diff', 'PORT 443'))
@@ -103,7 +106,7 @@ class port443:
         elif fileName == 'style.css':
             await ctx.send(embed=util.embedColor(self.CSS, "css", "FILE: style.css"))
             await asyncio.sleep(5)
-            string = '''Chúc mừng, bạn đã tìm thấy Key của đầu đạn. Tuy nhiên, chúng ta vẫn lo lắng rằng chưa biết địa điểm tấn công mà hắn chọn cụ thể sẽ diễn ra ở đâu.\nNhiệm vụ cuối cùng của bạn là tìm file tài liệu chứa thông tin về nơi sẽ diễn ra cuộc tấn công và báo cáo.\n CÁCH NỘP KEY VÀ ĐỊA ĐIỂM: EHC{key_location}'''
+            string = '''Chúc mừng, bạn đã tìm thấy Key của đầu đạn. Những đặc vụ khác cũng đã biết địa điểm tấn công nhưng chúng ta vẫn lo lắng rằng chưa biết thời gian bắt đầu tấn công mà hắn chọn sẽ diễn ra bao giờ.\nNhiệm vụ cuối cùng của bạn là tìm file tài liệu chứa thông tin về thời gian sẽ diễn ra cuộc tấn công và báo cáo lại.\nCÁCH NỘP KEY VÀ Thời gian: EHC{key_DD/MM/YYYY}'''
             await ctx.send(embed=util.embedColor(string, "", "FINAL MISSION"))
             await asyncio.sleep(3)
             string = "Theo như thông tin quét được của siêu máy tính thì nó có thể bị ẩn ở đường dẫn hiện tại. Hãy kiểm tra nó.\nNhớ rằng bạn chỉ còn 5 phút trước khi Antoine phát động tấn công. Good luck !\n(P/s: Cái nàyc có thể giúp ích: https://devconnected.com/how-to-show-hidden-files-on-linux/. Nhưng mà câu lệnh là: $ls -a 😜)"
@@ -124,10 +127,18 @@ class port443:
                     ""))
         elif fileName == '.nothing_special_here.txt':
             await ctx.send(embed=util.embedColor(self.FINALE, "", "FILE: .nothing_special_here.txt"))
-            await ctx.send(file=discord.File('qrcode.png'))
+            # await ctx.send(file=discord.File('QRCODE.png'))
+            #
+            # await ctx.send(util.syntaxHighlight(
+            #     "Hình ảnh này thật là kì lạ, đến siêu máy tính không thể phân tích được nó, bạn có thể sử dụng Google Lens để tìm hiểu thêm.\nĐã gần đến hồi kết của nhiệm vụ này rồi, chúng tôi không thể trợ giúp được gì thêm, hãy nộp Key và địa điểm để thoát khỏi kế hoạch của hắn nào",
+            #     ""))
+            await asyncio.sleep(4)
+            await ctx.send(
+                embed=util.embedColor("Lúc bắt đầu cũng sẽ là lúc mọi thứ chấm dứt, hãy chấp nhận đi. TAO ĐÃ THẮNG",
+                                      "diff", "REVENGE"))
             await asyncio.sleep(4)
             await ctx.send(util.syntaxHighlight(
-                "Hình ảnh này thật là kì lạ, đến siêu máy tính không thể phân tích được nó, bạn có thể sử dụng Google Lens để tìm hiểu thêm và nhớ, double of something is the best 🐧.\nĐã gần đến hồi kết của nhiệm vụ này rồi, chúng tôi không thể trợ giúp được gì thêm, hãy nộp Key và địa điểm để thoát khỏi kế hoạch của hắn nào",
+                "Ôi không, sao ta lại không nghĩ ra, thời gian tấn công sẽ rơi vào lúc thành lập của EHC, bạn hãy tìm nó ...., tìm lấ.....\nLINK RETURN: https://fptu-ethical-hackers-club.github.io/",
                 ""))
         else:
             await ctx.send(embed=util.embedColor("- Không file nào như vậy tồn tại - ", "diff", "ERROR"))

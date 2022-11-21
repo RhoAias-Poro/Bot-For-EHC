@@ -19,9 +19,12 @@ class port22:
         await ctx.send(util.syntaxHighlight(f"Kết nối tới {self.host} port 22 thành công\n", ""))
         await ctx.send(
             embed=util.embedColor(
-                "- Khi mà máy tính nhận ra sự hiện diện của bạn, nó sẽ tự động thay đổi mật khẩu của root user. Đây là nơi lưu trữ những mật khẩu đó. Hãy nhanh chóng tìm nó -",
+                "- Khi mà máy tính nhận ra sự hiện diện của bạn ở port 80, nó sẽ tự động thay đổi mật khẩu của root user nhằm đảm bảo sự bảo mật của máy chủ. Mật khẩu thay đổi sẽ được lưu trữ tại đây, bạn hãy nhanh chóng tìm ra nó. -",
                 'diff',
                 'PORT 22'))
+        await asyncio.sleep(4)
+        await ctx.send(
+            embed=util.embedColor("- Hãy nhớ rằng mỗi câu lệnh đều bắt đầu bằng $ -", "diff", "PREFIX REMINDER"))
         await asyncio.sleep(4)
         await ctx.send(embed=util.embedColor(
             "- Khi kết nối tới host, bạn nên sử dụng lệnh $ls để hiện các file có trong thư mục hiện tại -",

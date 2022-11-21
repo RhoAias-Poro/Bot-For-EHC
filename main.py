@@ -35,7 +35,7 @@ async def red_team(ctx):
         await channel.send(
             embed=embedColor("Welcome to the dark side. Please enter $start to begin the mission", 'diff', "RED TEAM"))
     else:
-        await ctx.send("Lỗi vì nhập lệnh không đúng channel")
+        await ctx.send("Lỗi vì nhập lệnh không đúng channel", delete_after=3)
 
 
 bot.run(os.getenv("TOKEN"))

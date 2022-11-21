@@ -41,6 +41,9 @@ class port80:
         if password.content == self.DECODE_NORMAL_PASS:  # same pass
             await ctx.send(util.syntaxHighlight(f"Đăng nhập tới {self.host} port 80 như normal user thành công\n", ""))
             await asyncio.sleep(4)
+            await ctx.send(
+                embed=util.embedColor("- Hãy nhớ rằng mỗi câu lệnh đều bắt đầu bằng $ -", "diff", "PREFIX REMINDER"))
+            await asyncio.sleep(4)
             await ctx.send(embed=util.embedColor(
                 "- Khi kết nối tới host, bạn nên sử dụng lệnh $ls để hiện các file có trong thư mục hiện tại -",
                 'diff', 'PORT 80'))
@@ -53,6 +56,9 @@ class port80:
             return False
         elif password.content == self.ROOT_PASS:
             await ctx.send(util.syntaxHighlight(f"Đăng nhập tới {self.host} port 80 như root user thành công\n", ""))
+            await asyncio.sleep(4)
+            await ctx.send(
+                embed=util.embedColor("- Hãy nhớ rằng mỗi câu lệnh đều bắt đầu bằng $ -", "diff", "PREFIX REMINDER"))
             await asyncio.sleep(4)
             await ctx.send(embed=util.embedColor(
                 "- Khi đã có quyền hạn của root user, bạn nên sử dụng lệnh $ls lại để có thể nhìn thấy các file mà từng bị ẩn đi vì không đủ quyền hạn -",
@@ -97,7 +103,7 @@ class port80:
             return True
         elif self.rootUser:
             if fileName == 'FullKey.txt':
-                await ctx.send(embed=util.embedColor("EHC{try_your_best}", "", "FILE: FullKey.txt"))
+                await ctx.send(embed=util.embedColor("eHc{trY-yoUr_bezt}", "", "FILE: FullKey.txt"))
                 await asyncio.sleep(3)
                 await ctx.send(util.syntaxHighlight(
                     "Thật giống với Key mà chúng ta tìm, nhưng có gì đó không đúng lắm", ""))
