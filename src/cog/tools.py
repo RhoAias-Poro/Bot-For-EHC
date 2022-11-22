@@ -48,11 +48,11 @@ class Tools(commands.Cog):
             await ctx.send(embed=util.embedColor(
                 "Một vài note cho bạn: \n  - Key mà bạn cần tìm là: EHC{..._..._..._...}\n  - Hãy cẩn thận các dấu cách(space) trong câu lệnh, chúng rất là quan trong.\n  - Nếu bạn gặp phải bất kì loại mã hóa nào thì bạn có thể tìm kiếm những phương thức giải mã trực tuyến với từ khóa như 'encryption_name + decoder + online'\n\nOK LET'S BEGIN",
                 "fix", "NOTE"))
-            await asyncio.sleep(5)
+            await asyncio.sleep(7)
             await ctx.send(embed=util.embedColor(
-                f"Host address: {self.host}\nPassword: {self.encodeNormalPass}\nCó vẻ như mật khẩu đã bị mã hóa bằng ROT13, hãy thử giải mã nó 😥",
+                f"Host address: {self.host}\nPassword: {self.encodeNormalPass}\nĐây là những thông tin mà chúng tôi có thể tìm được, tuy không biết mật khẩu của port nào nhưng nó đã bị mã hóa bằng ROT13, hãy thử giải mã nó 😥",
                 "", "INFORMATION YOU NEED"))
-            await asyncio.sleep(5)
+            await asyncio.sleep(7)
             await ctx.send(embed=util.embedColor(
                 "Việc bạn cần làm tiếp theo đó là scan host hoặc website để có thể tìm được ra cổng để có thể kết nối tới\nĐể scan được 1 host thì bạn có thể sử dụng lệnh scan: $scan host/address/website",
                 "", "SCAN COMMAND"))
