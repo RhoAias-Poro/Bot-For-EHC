@@ -132,6 +132,8 @@ class port80:
         if fileName == self.BREAK_FILE and self.ROOT_PASS == "tryhackme":
             port80.ROOT_PASS = self.UPDATE_ROOT_DECODE_PASS
             Users.users[ctx.author.id].Login = False
+            port80.rootUser = False
+            port80.normalUser = False
             string = "Máy tính nhận ra sự xâm phạm trái phép, tự động thực hiện giao thức trục xuất và thay đổi mật khẩu của root user."
             await ctx.send(embed=util.embedColor(string, "", "WARNING"))
             await asyncio.sleep(7)
