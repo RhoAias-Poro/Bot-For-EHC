@@ -138,7 +138,7 @@ class port443:
                                       "diff", "REVENGE"))
             await asyncio.sleep(4)
             await ctx.send(util.syntaxHighlight(
-                "Ôi không, sao ta lại không nghĩ ra, thời gian tấn công sẽ rơi vào lúc thành lập của EHC, bạn hãy tìm nó ...., tìm lấ.....\nLINK RETURN: https://fptu-ethical-hackers-club.github.io/",
+                "Ôi không, sao ta lại không nghĩ ra, thời gian tấn công sẽ rơi vào lúc thành lập của EHC, bạn hãy tìm nó ...., tìm lấ.....\nLINK RETURN: https://www.facebook.com/ehc.fptu",
                 ""))
         else:
             await ctx.send(embed=util.embedColor("- Không file nào như vậy tồn tại - ", "diff", "ERROR"))
