@@ -41,7 +41,7 @@ class port22:
         if fileName == 'changedKey.txt':
             await ctx.send(embed=util.embedColor(f"{self.FAKE_ENCODE_ROOT_PASS}", "", "FILE: changedKey.txt"))
             await asyncio.sleep(4)
-            await ctx.send(util.syntaxHighlight("It looks like a link to somewhere, try to open it", ""))
+            await ctx.send(util.syntaxHighlight("Giống như 1 đường link tới đâu đó, hãy click xem", ""))
         elif fileName == 'changedKey.text':
             await ctx.send(embed=util.embedColor(f"{self.NEW_ENCODE_ROOT_PASS}", "", "FILE: changedKey.text"))
             await asyncio.sleep(4)
