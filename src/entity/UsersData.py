@@ -1,4 +1,5 @@
 class Users:
+    users = {}
 
     def __init__(self):
         self.Login = False
