@@ -138,4 +138,5 @@ class port80:
             await ctx.send(util.syntaxHighlight(
                 "Không hay rồi, chúng ta sẽ phải quay lại nơi lưu trữ mật khẩu thay đổi vậy, theo như máy tính quét thì nó nằm ở port 22, hãy đến đó và lấy mật khẩu thay đổi",
                 ""))
+            return
         return await self.printFile(ctx, fileName)

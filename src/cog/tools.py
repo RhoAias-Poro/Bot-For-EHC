@@ -162,12 +162,16 @@ class Tools(commands.Cog):
                         'Thoát ra host: ' + self.host + ' port ' + Users.users[
                             ctx.author.id].portNumber + ' thành công\n',
                         'diff', "Exit Successfully"))
+                if Users.users[ctx.author.id].portNumber == '80':
+                    port80.rootUser = False
+                    port80.normalUser = False
             elif Users.users[ctx.author.id].portNumber == '443':
                 await ctx.send(
                     embed=util.embedColor(
                         'Thoát ra host: ' + self.website + ' port ' + Users.users[
                             ctx.author.id].portNumber + ' thành công\n',
                         'diff', 'Exit Successfully'))
+                port443.userLogin = False
             Users.users[ctx.author.id].Login = False
             Users.users[ctx.author.id].portNumber = None
         else:  # if not
