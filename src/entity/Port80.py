@@ -110,7 +110,7 @@ class port80:
         elif self.rootUser:
             if fileName == 'FullKey.txt':
                 await ctx.send(embed=util.embedColor("eHc{trY-yoUr_bezt}", "", "FILE: FullKey.txt"))
-                await asyncio.sleep(3)
+                await asyncio.sleep(2)
                 await ctx.send(util.syntaxHighlight(
                     "Thật giống với Key mà chúng ta tìm, nhưng có gì đó không đúng lắm", ""))
             elif fileName == 'Key2.txt':
@@ -136,7 +136,7 @@ class port80:
             port80.normalUser = False
             string = "Máy tính nhận ra sự xâm phạm trái phép, tự động thực hiện giao thức trục xuất và thay đổi mật khẩu của root user."
             await ctx.send(embed=util.embedColor(string, "", "WARNING"))
-            await asyncio.sleep(7)
+            await asyncio.sleep(5)
             await ctx.send(util.syntaxHighlight(
                 "Không hay rồi, chúng ta sẽ phải quay lại nơi lưu trữ mật khẩu thay đổi vậy, theo như máy tính quét thì nó nằm ở port 22, hãy đến đó và lấy mật khẩu thay đổi",
                 ""))

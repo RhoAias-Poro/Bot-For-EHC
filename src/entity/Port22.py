@@ -25,7 +25,7 @@ class port22:
                 "- Khi mà máy tính nhận ra sự hiện diện của bạn ở port 80, nó sẽ tự động thay đổi mật khẩu của root user nhằm đảm bảo sự bảo mật của máy chủ. Mật khẩu thay đổi sẽ được lưu trữ tại đây, bạn hãy nhanh chóng tìm ra nó. -",
                 'diff',
                 'PORT 22'))
-        await asyncio.sleep(3)
+        await asyncio.sleep(2)
         await ctx.send(
             embed=util.embedColor("- Hãy nhớ rằng mỗi câu lệnh đều bắt đầu bằng $ -", "diff", "PREFIX REMINDER"))
         await asyncio.sleep(2)
@@ -44,11 +44,11 @@ class port22:
         Users.users[ctx.author.id].Login = True
         if fileName == 'changedKey.txt':
             await ctx.send(embed=util.embedColor(f"{self.FAKE_ENCODE_ROOT_PASS}", "", "FILE: changedKey.txt"))
-            await asyncio.sleep(3)
+            await asyncio.sleep(2)
             await ctx.send(util.syntaxHighlight("Giống như 1 đường link tới đâu đó, hãy click xem", ""))
         elif fileName == 'changedKey.text':
             await ctx.send(embed=util.embedColor(f"{self.NEW_ENCODE_ROOT_PASS}", "", "FILE: changedKey.text"))
-            await asyncio.sleep(3)
+            await asyncio.sleep(2)
             await ctx.send(util.syntaxHighlight(
                 "Mật khẩu mới đã bị mã hóa theo dạng BASE64, nó hoàn toàn khác với ROT13. Hãy giải mã nó và sử dụng lệnh $exit để đăng xuất và kết nối tới port 80 với mật khẩu đã thay đổi",
                 ""))
